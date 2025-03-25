@@ -1,5 +1,9 @@
+import { MyLayout } from "../components/layout"
+
 function HomePage() {
-  return <h1>Home Page</h1>
+  return (
+    <MyLayout />
+  )
 }
 
 export default HomePage

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_1" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 186.44 37.34">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4285f4;
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-3 {
+        letter-spacing: 0em;
+      }
+
+      .cls-4 {
+        letter-spacing: 0em;
+      }
+
+      .cls-5 {
+        fill: #000;
+        font-family: MicrosoftYaHei, 'Microsoft YaHei';
+        font-size: 31px;
+      }
+
+      .cls-6 {
+        letter-spacing: -.01em;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M25.95,5.25h-1.98V1.2c0-.65-.55-1.2-1.2-1.2H3.87C1.71,0,0,1.71,0,3.83v25.3c0,2.12,1.71,3.83,3.83,3.83h.6v-13.18c0-2.35,3.41-2.35,3.41-5.02h11.43c0,2.63,3.36,2.81,3.36,5.02v13.23h3.27c.65,0,1.2-.55,1.2-1.2V6.45c.05-.65-.51-1.2-1.15-1.2ZM19.45,12.54c0,.55-.41.97-.97.97h-9.82c-.55,0-.97-.41-.97-.97,0-.41.28-.78.65-.92-.37-.14-.65-.51-.65-.92,0-.55.41-.97.97-.97h9.77c.55,0,.97.41.97.97,0,.41-.28.78-.65.92.41.14.69.51.69.92ZM21.57,5.25H3.83c-.78,0-1.43-.65-1.43-1.43s.65-1.43,1.43-1.43h17.7v2.86h.05Z"/>
+  <text class="cls-5" transform="translate(33.89 29.43)"><tspan x="0" y="0">Book</tspan><tspan class="cls-2" x="75.74" y="0">S</tspan><tspan class="cls-3" x="92.56" y="0">t</tspan><tspan class="cls-4" x="103.85" y="0">o</tspan><tspan class="cls-6" x="123.56" y="0">r</tspan><tspan x="134.96" y="0">e</tspan></text>
+</svg>
