@@ -1,11 +1,10 @@
-import { Breadcrumb, Layout, Menu, theme } from "antd"
+import { Breadcrumb, Layout, theme } from "antd"
 
-const { Header, Content, Footer } = Layout
+import MyHeader from "./header";
+import MyFooter from "./footer";
 
-const items = Array.from({ length: 15 }).map((_, index) => ({
-  key: index + 1,
-  label: `nav ${index + 1}`,
-}));
+const { Content } = Layout
+
 
 function MyLayout() {
   const {
@@ -15,22 +14,8 @@ function MyLayout() {
   return (
     <Layout>
       {/* Header */}
-      <Header style={{ display: "flex", alignItems: "center" }}>
-        <div className="demo-logo">
-          <img
-            src="/logo-dark.svg"
-            alt="logo"
-            style={{ height: 32 }}
-          />
-        </div>
-        <Menu
-          theme="light"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={items}
-          style={{ flex: 1, minWidth: 0 }}
-        />
-      </Header>
+      <MyHeader />
+      
       {/* Content */}
       <Content style={{ padding: "0 48px" }}>
         <Breadcrumb style={{ margin: "16px 0" }}>
@@ -49,10 +34,9 @@ function MyLayout() {
           Content
         </div>
       </Content>
+
       {/* Footer */}
-      <Footer style={{ textAlign: "center" }}>
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
-      </Footer>
+      <MyFooter />
     </Layout>
   )
 }

@@ -1,0 +1,30 @@
+.header {
+  background-color: white;
+  height: 90px;
+  padding: 0;
+}
+
+.navbar {
+  align-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  max-width: 90%;
+  padding: 0 50px;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  max-width: 120px;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  min-width: 340px;
+  border-bottom: none;
+}
