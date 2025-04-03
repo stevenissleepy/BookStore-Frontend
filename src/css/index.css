@@ -1,3 +1,9 @@
+/* layout */
+.my-layout {
+  min-height: 100vh;
+}
+
+/* header */
 .header {
   background-color: white;
   height: 90px;
@@ -27,4 +33,12 @@
 .menu {
   min-width: 340px;
   border-bottom: none;
+}
+
+/* content */
+.content-container {
+  min-height: calc(100vh - 90px);
+  padding-left: 10%;
+  padding-right: 10%;
+  width: 100%;
 }
