@@ -6,7 +6,7 @@ import MyFooter from "./footer";
 const { Content } = Layout
 
 
-function MyLayout(children) {
+function MyLayout({ children }) {
 
   return (
     <Layout className="my-layout">
