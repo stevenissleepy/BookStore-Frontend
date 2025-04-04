@@ -1,7 +1,7 @@
 import { MyLayout } from "../components/layout"
 import BookList from "../components/book_list"
 
-import books from "../data"
+import { books } from "../data"
 
 function HomePage() {
   return (

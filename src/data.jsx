@@ -31,6 +31,54 @@ const books = [
     description: "A romantic novel that also critiques the British landed gentry.",
     cover: "/book_cover.jpg",
   },
+  {
+    id: 5,
+    title: "Moby Dick",
+    author: "Herman Melville",
+    price: 14.99,
+    description: "A novel about the voyage of the whaling ship Pequod.",
+    cover: "/book_cover.jpg",
+  },
+  {
+    id: 6,
+    title: "War and Peace",
+    author: "Leo Tolstoy",
+    price: 19.99,
+    description: "A historical novel that chronicles the French invasion of Russia.",
+    cover: "/book_cover.jpg",
+  },
+  {
+    id: 7,
+    title: "The Catcher in the Rye",
+    author: "J.D. Salinger",
+    price: 13.99,
+    description: "A story about the challenges of teenage life and alienation.",
+    cover: "/book_cover.jpg",
+  },
+  {
+    id: 8,
+    title: "The Hobbit",
+    author: "J.R.R. Tolkien",
+    price: 16.99,
+    description: "A fantasy novel about the journey of Bilbo Baggins.",
+    cover: "/book_cover.jpg",
+  },
+  {
+    id: 9,
+    title: "Crime and Punishment",
+    author: "Fyodor Dostoevsky",
+    price: 17.99,
+    description: "A psychological novel about morality and redemption.",
+    cover: "/book_cover.jpg",
+  },
+  {
+    id: 10,
+    title: "The Odyssey",
+    author: "Homer",
+    price: 11.99,
+    description: "An epic poem about the adventures of Odysseus.",
+    cover: "/book_cover.jpg",
+  },
 ];
 
-export default books;
+export { books };

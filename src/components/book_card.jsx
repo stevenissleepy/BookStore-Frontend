@@ -2,8 +2,6 @@ import { Card } from "antd"
 import { Link } from "react-router-dom"
 const { Meta } = Card
 
-import books from "../data"
-
 function BookCard({ book }) {
   return (
     <Link to={`/`}>
