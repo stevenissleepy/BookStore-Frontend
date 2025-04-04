@@ -40,5 +40,6 @@
   min-height: calc(100vh - 90px);
   padding-left: 10%;
   padding-right: 10%;
+  padding-top: 120px;
   width: 100%;
 }
