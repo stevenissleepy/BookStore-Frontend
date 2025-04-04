@@ -5,7 +5,7 @@ const { Footer } = Layout
 function MyFooter() {
   return (
     <Footer style={{ textAlign: "center" }}>
-      Ant Des ign ©{new Date().getFullYear()} Created by Ant UED
+      BookJar ©{new Date().getFullYear()} Created by Steven
     </Footer>
   )
 }
