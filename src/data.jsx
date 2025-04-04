@@ -81,4 +81,11 @@ const books = [
   },
 ];
 
-export { books };
+const users = [
+  {
+    nickname: "John Doe",
+    avatar: "/profile-img.png",
+  }
+]
+
+export { books, users };

@@ -48,3 +48,14 @@ body {
   padding-top: 120px;
   width: 100%;
 }
+
+/* user profile */
+.profile-container {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.avatar-wrapper {
+  width: 100%;
+  text-align: center;
+}

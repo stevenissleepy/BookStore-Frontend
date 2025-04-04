@@ -8,8 +8,8 @@ const { Header } = Layout
 function MyHeader() {
   const navItems = [
     { label: "HOME", value: "/" },
+    { label: "PROFILE", value: "/profile" },
     { label: "CART", value: "/cart" },
-    { label: "DASHBOARD", value: "/dashboard" },
     { label: "ORDER", value: "/order" },
   ]
 
