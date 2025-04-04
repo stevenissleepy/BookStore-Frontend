@@ -1,3 +1,8 @@
+/* global */
+body {
+  margin: 0;
+}
+
 /* layout */
 .my-layout {
   min-height: 100vh;

@@ -5,7 +5,7 @@ const books = [
     author: "Harper Lee",
     price: 18.99,
     description: "A novel about the serious issues of rape and racial inequality.",
-    cover: "/book_cover.jpg",
+    cover: "/book-cover.jpg",
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const books = [
     author: "George Orwell",
     price: 15.99,
     description: "A dystopian novel set in a totalitarian society under constant surveillance.",
-    cover: "/book_cover.jpg",
+    cover: "/book-cover.jpg",
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ const books = [
     author: "F. Scott Fitzgerald",
     price: 10.99,
     description: "A story about the young and mysterious millionaire Jay Gatsby.",
-    cover: "/book_cover.jpg",
+    cover: "/book-cover.jpg",
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const books = [
     author: "Jane Austen",
     price: 12.99,
     description: "A romantic novel that also critiques the British landed gentry.",
-    cover: "/book_cover.jpg",
+    cover: "/book-cover.jpg",
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ const books = [
     author: "Herman Melville",
     price: 14.99,
     description: "A novel about the voyage of the whaling ship Pequod.",
-    cover: "/book_cover.jpg",
+    cover: "/book-cover.jpg",
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ const books = [
     author: "Leo Tolstoy",
     price: 19.99,
     description: "A historical novel that chronicles the French invasion of Russia.",
-    cover: "/book_cover.jpg",
+    cover: "/book-cover.jpg",
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ const books = [
     author: "J.D. Salinger",
     price: 13.99,
     description: "A story about the challenges of teenage life and alienation.",
-    cover: "/book_cover.jpg",
+    cover: "/book-cover.jpg",
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ const books = [
     author: "J.R.R. Tolkien",
     price: 16.99,
     description: "A fantasy novel about the journey of Bilbo Baggins.",
-    cover: "/book_cover.jpg",
+    cover: "/book-cover.jpg",
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ const books = [
     author: "Fyodor Dostoevsky",
     price: 17.99,
     description: "A psychological novel about morality and redemption.",
-    cover: "/book_cover.jpg",
+    cover: "/book-cover.jpg",
   },
   {
     id: 10,
@@ -77,7 +77,7 @@ const books = [
     author: "Homer",
     price: 11.99,
     description: "An epic poem about the adventures of Odysseus.",
-    cover: "/book_cover.jpg",
+    cover: "/book-cover.jpg",
   },
 ];
 
