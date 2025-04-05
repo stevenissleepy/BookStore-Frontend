@@ -54,3 +54,37 @@ body {
   width: 100%;
   text-align: center;
 }
+
+/* cart */
+.cart-item {
+  width: 100%;
+}
+
+.cart-item-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.cart-item-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.cart-item-author {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #888;
+}
+
+.cart-item-price {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.cart-item-total {
+  font-size: 18px;
+  font-weight: 600;
+}
