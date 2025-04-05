@@ -8,19 +8,15 @@ import { users } from "../data"
 function ProfilePage() {
   return (
     <MyLayout>
-      <Row justify={"center"} style={{ marginBottom: 20 }}>
+      <Row justify={"center"} gutter={[0, 20]}>
         <Col span={16}>
           <ProfileAvatar user={users[0]} />
         </Col>
-      </Row>
 
-      <Row justify={"center"} style={{ marginBottom: 20 }}>
         <Col span={16}>
           <ProfileInfo user={users[0]} />
         </Col>
-      </Row>
 
-      <Row justify={"center"}>
         <Col span={16}>
           <ProfileAddress user={users[0]} />
         </Col>
