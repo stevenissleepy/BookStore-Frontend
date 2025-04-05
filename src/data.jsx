@@ -127,6 +127,25 @@ const users = [
         cover: "/book-cover.jpg",
       },
     ],
+    orders: [
+      {
+        receiver: "Jane Doe",
+        tel: "1234567890",
+        address: "123 Main St, Springfield, USA",
+        date: "2023-10-01",
+        totalPrice: 18.99,
+        books: [
+          {
+            id: 1,
+            title: "To Kill a Mockingbird",
+            author: "Harper Lee",
+            price: 18.99,
+            description: "A novel about the serious issues of rape and racial inequality.",
+            cover: "/book-cover.jpg",
+          },
+        ],
+      },
+    ],
   },
 ]
 
