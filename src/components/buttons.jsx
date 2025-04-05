@@ -1,7 +1,7 @@
 import { Button } from "antd"
 import { EditOutlined } from "@ant-design/icons"
 
-function EditButton({ onClick }) {
+function EditButton() {
   return (
     <Button
       shape="circle"
