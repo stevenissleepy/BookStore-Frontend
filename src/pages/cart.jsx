@@ -1,15 +1,28 @@
+import { Card, Row, Col } from "antd"
+
 import { MyLayout } from "../components/layout"
-import CardList from "../components/cart_list"
+import { CartList, CartListHeader } from "../components/cart_list"
 
 import { users } from "../data"
-import { Card } from "antd"
 
 function CartPage() {
   return (
     <MyLayout>
-      <Card variant="borderless">
-        <CardList cart={users[0].cart} />
-      </Card>
+      <Row gutter={[0, 20]}>
+        {/* cart title */}
+        <Col span={24}>
+          <Card variant="borderless">
+            <CartListHeader />
+          </Card>
+        </Col>
+
+        {/* cart list */}
+        <Col span={24}>
+          <Card variant="borderless">
+            <CartList cart={users[0].cart} />
+          </Card>
+        </Col>
+      </Row>
     </MyLayout>
   )
 }

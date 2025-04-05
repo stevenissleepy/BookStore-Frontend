@@ -56,6 +56,11 @@ body {
 }
 
 /* cart */
+.cart-header-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
 .cart-item {
   width: 100%;
 }
