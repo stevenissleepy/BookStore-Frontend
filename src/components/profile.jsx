@@ -3,7 +3,7 @@ import { EditOutlined } from "@ant-design/icons"
 
 function ProfileAvatar({ user }) {
   return (
-    <Card>
+    <Card variant="borderless">
       <Space className="avatar-wrapper" direction="vertical" size={2}>
         {/* avatar */}
         <div style={{ textAlign: "center" }}>
@@ -33,4 +33,13 @@ function ProfileAvatar({ user }) {
   )
 }
 
-export { ProfileAvatar }
+function ProfileInfo({ user }) {
+  return (
+    <Card title="基础信息" variant="borderless">
+      <p>用户名：{user.name}</p>
+      <p>余额：{user.balance}</p>
+    </Card>
+  )
+}
+
+export { ProfileAvatar, ProfileInfo }

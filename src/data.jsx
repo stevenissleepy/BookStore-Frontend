@@ -83,7 +83,9 @@ const books = [
 
 const users = [
   {
+    name: "1",
     nickname: "John Doe",
+    balance: 100.0,
     avatar: "/profile-img.png",
   }
 ]
