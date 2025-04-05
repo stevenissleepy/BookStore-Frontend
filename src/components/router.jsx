@@ -5,6 +5,7 @@ import LoginPage from "../pages/login"
 import ProfilePage from "../pages/profile"
 import CartPage from "../pages/cart"
 import OrderPage from "../pages/order"
+import BookPage from "../pages/book"
 
 function AppRouter() {
   return (
@@ -15,8 +16,9 @@ function AppRouter() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/order" element={<OrderPage />} />
+        <Route path="/book" element={<BookPage />} />
 
-        {/* <Route path="/book/:id" element={<BookPage />} />
+        {/* 
           <Route path="/rank" element={<RankPage />} />
           <Route path="/course" element={<CoursePage />} />
           <Route path="/profile/:id" element={<OtherUserProfilePage />} />

@@ -106,43 +106,65 @@ body {
 
 .order-item {
   width: 100%;
-  transition: background-color 0.3s; /* 鼠标悬停时的过渡效果 */
+  transition: background-color 0.3s;
 }
 
 .order-item:hover {
-  background-color: #fafafa; /* 鼠标悬停时背景变浅 */
+  background-color: #fafafa;
 }
 
-/* 订单接收人信息 */
 .order-item-receiver {
   margin: 0;
   font-size: 16px;
-  font-weight: 600; /* 加粗接收人名称 */
+  font-weight: 600;
   color: #333;
 }
 
 .order-item-tel {
   margin: 4px 0;
   font-size: 14px;
-  color: #555; /* 电话信息颜色稍浅 */
+  color: #555;
 }
 
 .order-item-address {
   margin: 4px 0;
   font-size: 14px;
-  color: #888; /* 地址信息颜色更浅 */
+  color: #888;
 }
 
-/* 总价样式 */
 .order-item-price {
   font-size: 16px;
-  font-weight: 600; 
-  text-align: right; 
+  font-weight: 600;
+  text-align: right;
 }
 
-/* 日期样式 */
 .order-item-date {
   font-size: 14px;
-  color: #888; 
-  text-align: right; 
+  color: #888;
+  text-align: right;
+}
+
+/* book */
+.book-info-price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #4285f4;
+  margin-bottom: 15px;
+  margin-top: 8px;
+}
+
+.book-info-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.book-info-description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #202124;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }

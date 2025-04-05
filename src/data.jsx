@@ -6,6 +6,9 @@ const books = [
     price: 18.99,
     description: "A novel about the serious issues of rape and racial inequality.",
     cover: "/book-cover.jpg",
+    category: "Fiction",
+    language: "English",
+    ISBN: "978-0-06-112008-4",
   },
   {
     id: 2,
@@ -14,6 +17,9 @@ const books = [
     price: 15.99,
     description: "A dystopian novel set in a totalitarian society under constant surveillance.",
     cover: "/book-cover.jpg",
+    category: "Dystopian",
+    language: "English",
+    ISBN: "978-0-452-28423-4",
   },
   {
     id: 3,
@@ -22,6 +28,9 @@ const books = [
     price: 10.99,
     description: "A story about the young and mysterious millionaire Jay Gatsby.",
     cover: "/book-cover.jpg",
+    category: "Classic",
+    language: "English",
+    ISBN: "978-0-7432-7356-5",
   },
   {
     id: 4,
@@ -30,6 +39,9 @@ const books = [
     price: 12.99,
     description: "A romantic novel that also critiques the British landed gentry.",
     cover: "/book-cover.jpg",
+    category: "Romance",
+    language: "English",
+    ISBN: "978-0-19-953556-9",
   },
   {
     id: 5,
@@ -38,6 +50,9 @@ const books = [
     price: 14.99,
     description: "A novel about the voyage of the whaling ship Pequod.",
     cover: "/book-cover.jpg",
+    category: "Adventure",
+    language: "English",
+    ISBN: "978-0-14-243724-7",
   },
   {
     id: 6,
@@ -46,6 +61,9 @@ const books = [
     price: 19.99,
     description: "A historical novel that chronicles the French invasion of Russia.",
     cover: "/book-cover.jpg",
+    category: "Historical",
+    language: "Russian",
+    ISBN: "978-0-14-044793-4",
   },
   {
     id: 7,
@@ -54,6 +72,9 @@ const books = [
     price: 13.99,
     description: "A story about the challenges of teenage life and alienation.",
     cover: "/book-cover.jpg",
+    category: "Fiction",
+    language: "English",
+    ISBN: "978-0-316-76948-0",
   },
   {
     id: 8,
@@ -62,6 +83,9 @@ const books = [
     price: 16.99,
     description: "A fantasy novel about the journey of Bilbo Baggins.",
     cover: "/book-cover.jpg",
+    category: "Fantasy",
+    language: "English",
+    ISBN: "978-0-618-00221-3",
   },
   {
     id: 9,
@@ -70,6 +94,9 @@ const books = [
     price: 17.99,
     description: "A psychological novel about morality and redemption.",
     cover: "/book-cover.jpg",
+    category: "Philosophical",
+    language: "Russian",
+    ISBN: "978-0-14-044913-6",
   },
   {
     id: 10,
@@ -78,6 +105,9 @@ const books = [
     price: 11.99,
     description: "An epic poem about the adventures of Odysseus.",
     cover: "/book-cover.jpg",
+    category: "Epic",
+    language: "Greek",
+    ISBN: "978-0-14-026886-7",
   },
 ]
 
@@ -109,6 +139,7 @@ const users = [
         price: 18.99,
         description: "A novel about the serious issues of rape and racial inequality.",
         cover: "/book-cover.jpg",
+        category: "Fiction",
       },
       {
         id: 2,
@@ -117,6 +148,7 @@ const users = [
         price: 15.99,
         description: "A dystopian novel set in a totalitarian society under constant surveillance.",
         cover: "/book-cover.jpg",
+        category: "Dystopian",
       },
       {
         id: 3,
@@ -125,6 +157,7 @@ const users = [
         price: 10.99,
         description: "A story about the young and mysterious millionaire Jay Gatsby.",
         cover: "/book-cover.jpg",
+        category: "Classic",
       },
     ],
     orders: [
@@ -142,6 +175,7 @@ const users = [
             price: 18.99,
             description: "A novel about the serious issues of rape and racial inequality.",
             cover: "/book-cover.jpg",
+            category: "Fiction",
           },
         ],
       },
