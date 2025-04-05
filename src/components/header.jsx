@@ -1,16 +1,19 @@
 import { Layout, Row, Col, Menu, Dropdown, Button } from "antd"
-import { Link } from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 import { UserOutlined, FormOutlined } from "@ant-design/icons"
 import { AccountBookOutlined, LogoutOutlined } from "@ant-design/icons"
 
 const { Header } = Layout
 
 function MyHeader() {
+  const navigate = useNavigate()
+  const parts = useLocation().pathname.split("/")
+  const selectedKey = "/" + parts[parts.length - 1]
   const navItems = [
-    { label: "HOME", value: "/" },
-    { label: "PROFILE", value: "/profile" },
-    { label: "CART", value: "/cart" },
-    { label: "ORDER", value: "/order" },
+    { label: "HOME", key: "/" },
+    { label: "PROFILE", key: "/profile" },
+    { label: "CART", key: "/cart" },
+    { label: "ORDER", key: "/order" },
   ]
 
   const dropMenuItems = [
@@ -37,6 +40,10 @@ function MyHeader() {
     },
   ]
 
+  const handleMenuClick = (e) => {
+    navigate(e.key)
+  }
+
   return (
     <Header className="header">
       <Row className="navbar" justify="space-between">
@@ -49,7 +56,14 @@ function MyHeader() {
 
         {/* Menu */}
         <Col className="menu-container" flex="auto">
-          <Menu className="menu" mode="horizontal" items={navItems} />
+          <Menu
+            className="menu"
+            mode="horizontal"
+            defaultSelectedKeys={[selectedKey]}
+            selectedKeys={[selectedKey]}
+            items={navItems}
+            onClick={handleMenuClick}
+          />
         </Col>
 
         {/* Login buttons */}
