@@ -87,6 +87,20 @@ const users = [
     nickname: "John Doe",
     balance: 100.0,
     avatar: "/profile-img.png",
+    addresses: [
+      {
+        id: 1,
+        receiver: "Jane Doe",
+        tel: "1234567890",
+        address: "123 Main St, Springfield, USA",
+      },
+      {
+        id: 2,
+        receiver: "John Smith",
+        tel: "0987654321",
+        address: "456 Elm St, Springfield, USA",
+      },
+    ],
   }
 ]
 
