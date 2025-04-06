@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Row, Col } from "antd"
 
 import { MyLayout } from "../components/layout"
@@ -8,8 +8,17 @@ import { SearchBox } from "../components/search_box"
 import { searchBooks } from "../service/book"
 
 function HomePage() {
-  // 初始加载所有 books
   const [books, setBooks] = useState([])
+
+  // 初始加载所有 books
+  useEffect(() => {
+    async function fetchBooks() {
+      const results = await searchBooks("")
+      setBooks(results)
+    }
+    fetchBooks()
+  }
+  , [])
 
   const handleSearch = async (query) => {
     const results = await searchBooks(query)
@@ -21,7 +30,7 @@ function HomePage() {
       <Row gutter={[0, 50]}>
         {/* search form */}
         <Col span={24}>
-          <SearchBox onSearch={handleSearch}/>
+          <SearchBox handleSearch={handleSearch}/>
         </Col>
 
         {/* book list */}

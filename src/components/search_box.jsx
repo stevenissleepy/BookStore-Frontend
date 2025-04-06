@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { SearchOutlined } from "@ant-design/icons"
 
-function SearchBox({ onSearch }) {
+function SearchBox({ handleSearch }) {
   const [query, setQuery] = useState("")
 
   const handleInputChange = (e) => {
@@ -9,7 +9,7 @@ function SearchBox({ onSearch }) {
   }
 
   const handleSubmit = () => {
-    onSearch(query)
+    handleSearch(query)
   }
 
   return (
