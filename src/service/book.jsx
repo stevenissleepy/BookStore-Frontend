@@ -11,4 +11,17 @@ function getBookById(id) {
   })
 }
 
-export { getBookById }
+function getAllBooks() {
+  return new Promise((resolve) => {
+    resolve(books)
+  })
+}
+
+function searchBooks(query) {
+  return new Promise((resolve) => {
+    const filteredBooks = books.filter((book) => book.title.toLowerCase().includes(query.toLowerCase()))
+    resolve(filteredBooks)
+  })
+}
+
+export { getBookById, getAllBooks, searchBooks }
