@@ -24,4 +24,18 @@ function searchBooks(query) {
   })
 }
 
-export { getBookById, getAllBooks, searchBooks }
+function getBookCategories() {
+  return new Promise((resolve) => {
+    const categories = [...new Set(books.map((book) => book.category))]
+    resolve(categories)
+  })
+}
+
+function getBooksByCategory(category) {
+  return new Promise((resolve) => {
+    const filteredBooks = books.filter((book) => book.category === category)
+    resolve(filteredBooks)
+  })
+}
+
+export { getBookById, getAllBooks, searchBooks, getBookCategories, getBooksByCategory }

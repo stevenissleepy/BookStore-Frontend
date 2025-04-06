@@ -92,6 +92,13 @@ body {
   border-color: #4285f4;
 }
 
+.book-list-header-left {
+  font-size: 16px;
+  font-weight: 400;
+  color: #202124;
+  font-family: "Open Sans", sans-serif;
+}
+
 .book-card-img-wrapper {
   width: 100%;
   padding-top: 120%;

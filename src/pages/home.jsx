@@ -27,7 +27,7 @@ function HomePage() {
 
   return (
     <MyLayout>
-      <Row gutter={[0, 50]}>
+      <Row>
         {/* search form */}
         <Col span={24}>
           <SearchBox handleSearch={handleSearch}/>
