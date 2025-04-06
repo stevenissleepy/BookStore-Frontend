@@ -1,6 +1,6 @@
 const books = [
   {
-    id: 1,
+    id: "1",
     title: "To Kill a Mockingbird",
     author: "Harper Lee",
     price: 18.99,
@@ -11,7 +11,7 @@ const books = [
     ISBN: "978-0-06-112008-4",
   },
   {
-    id: 2,
+    id: "2",
     title: "1984",
     author: "George Orwell",
     price: 15.99,
@@ -22,7 +22,7 @@ const books = [
     ISBN: "978-0-452-28423-4",
   },
   {
-    id: 3,
+    id: "3",
     title: "The Great Gatsby",
     author: "F. Scott Fitzgerald",
     price: 10.99,
@@ -33,7 +33,7 @@ const books = [
     ISBN: "978-0-7432-7356-5",
   },
   {
-    id: 4,
+    id: "4",
     title: "Pride and Prejudice",
     author: "Jane Austen",
     price: 12.99,
@@ -44,7 +44,7 @@ const books = [
     ISBN: "978-0-19-953556-9",
   },
   {
-    id: 5,
+    id: "5",
     title: "Moby Dick",
     author: "Herman Melville",
     price: 14.99,
@@ -55,7 +55,7 @@ const books = [
     ISBN: "978-0-14-243724-7",
   },
   {
-    id: 6,
+    id: "6",
     title: "War and Peace",
     author: "Leo Tolstoy",
     price: 19.99,
@@ -66,7 +66,7 @@ const books = [
     ISBN: "978-0-14-044793-4",
   },
   {
-    id: 7,
+    id: "7",
     title: "The Catcher in the Rye",
     author: "J.D. Salinger",
     price: 13.99,
@@ -77,7 +77,7 @@ const books = [
     ISBN: "978-0-316-76948-0",
   },
   {
-    id: 8,
+    id: "8",
     title: "The Hobbit",
     author: "J.R.R. Tolkien",
     price: 16.99,
@@ -88,7 +88,7 @@ const books = [
     ISBN: "978-0-618-00221-3",
   },
   {
-    id: 9,
+    id: "9",
     title: "Crime and Punishment",
     author: "Fyodor Dostoevsky",
     price: 17.99,
@@ -99,7 +99,7 @@ const books = [
     ISBN: "978-0-14-044913-6",
   },
   {
-    id: 10,
+    id: "10",
     title: "The Odyssey",
     author: "Homer",
     price: 11.99,

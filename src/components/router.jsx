@@ -16,7 +16,7 @@ function AppRouter() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/order" element={<OrderPage />} />
-        <Route path="/book" element={<BookPage />} />
+        <Route path="/book/:id" element={<BookPage />} />
 
         {/* 
           <Route path="/rank" element={<RankPage />} />
