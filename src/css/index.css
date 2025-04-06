@@ -99,6 +99,17 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+.book-list-header-right {
+  display: flex;
+  align-self: center;
+  justify-content: flex-end;
+  margin-right: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #202124;
+  font-family: "Open Sans", sans-serif;
+}
+
 .book-card-img-wrapper {
   width: 100%;
   padding-top: 120%;
