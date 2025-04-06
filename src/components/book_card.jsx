@@ -1,12 +1,11 @@
 import { Card } from "antd"
 import { Link } from "react-router-dom"
-const { Meta } = Card
 
 function BookCard({ book }) {
   return (
-    <Link to={`/`}>
+    <Link to={`/book/${book.id}`}>
       <Card hoverable cover={<img alt="example" src={book.cover} />}>
-        <Meta title={book.title} description={`${book.price} 元`} />
+        <Card.Meta title={book.title} description={`${book.price} 元`} />
       </Card>
     </Link>
   )
