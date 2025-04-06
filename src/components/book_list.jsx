@@ -17,8 +17,6 @@ function BookList({ books }) {
           </List.Item>
         )}
       />
-      {/* pagination */}
-      
     </Space>
   )
 }
