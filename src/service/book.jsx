@@ -31,11 +31,4 @@ function getBookCategories() {
   })
 }
 
-function getBooksByCategory(category) {
-  return new Promise((resolve) => {
-    const filteredBooks = books.filter((book) => book.category === category)
-    resolve(filteredBooks)
-  })
-}
-
-export { getBookById, getAllBooks, searchBooks, getBookCategories, getBooksByCategory }
+export { getBookById, getAllBooks, searchBooks, getBookCategories }

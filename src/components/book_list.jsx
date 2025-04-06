@@ -3,10 +3,11 @@ import { List, Space, Row, Col, Select } from "antd"
 
 import BookCard from "./book_card"
 
-import { getBookCategories, getBooksByCategory } from "../service/book"
+import { getBookCategories } from "../service/book"
 
 function BookList({ books }) {
   const [categories, setCategories] = useState([])
+  const [filteredBooks, setFilteredBooks] = useState(books)
 
   useEffect(() => {
     async function fetchCategories() {
@@ -16,12 +17,26 @@ function BookList({ books }) {
     fetchCategories()
   }, [])
 
+  useEffect(() => {
+    setFilteredBooks(books)
+  }, [books])
+
+  const handleCategoryChange = (selectedCategories) => {
+    if (selectedCategories.length === 0) {
+      setFilteredBooks(books)
+    } else {
+      const filtered = books.filter((book) =>
+        selectedCategories.includes(book.category)
+      )
+      setFilteredBooks(filtered)
+    }
+  }
+
   return (
     <Space direction="vertical" style={{ width: "100%" }}>
-      {/* book list header */}
       <Row justify="space-between" align="middle" style={{ marginBottom: "20px", marginTop: "30px" }}>
         <Col>
-          <div className="book-list-header-left">{books.length} Books</div>
+          <div className="book-list-header-left">{filteredBooks.length} Books</div>
         </Col>
         <Col span={4}>
           <Select
@@ -33,14 +48,14 @@ function BookList({ books }) {
               value: category,
               label: category,
             }))}
+            onChange={handleCategoryChange}
           />
         </Col>
       </Row>
 
-      {/* book list */}
       <List
         grid={{ gutter: 16, column: 4 }}
-        dataSource={books.map((book) => ({
+        dataSource={filteredBooks.map((book) => ({
           ...book,
           key: book.id,
         }))}
