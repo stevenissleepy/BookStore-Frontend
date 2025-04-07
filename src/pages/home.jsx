@@ -12,7 +12,7 @@ function HomePage() {
 
   // 初始加载所有 books
   useEffect(() => {
-    searchBooks.then(setBooks)
+    searchBooks("").then(setBooks)
   }, [])
 
   const handleSearch = async (query) => {

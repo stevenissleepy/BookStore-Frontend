@@ -8,7 +8,8 @@ function SearchBox({ handleSearch }) {
     setQuery(e.target.value)
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     handleSearch(query)
   }
 
