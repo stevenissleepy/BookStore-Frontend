@@ -2,21 +2,30 @@ import { List, Row, Col, Checkbox, Button } from "antd"
 
 import CartItem from "./cart_item"
 
-function CartList({ cart, handleQuantityChange }) {
+function CartList({ cart, handleQuantityChange, handleSelectChange }) {
   return (
     <List
       itemLayout="horizontal"
       dataSource={cart}
-      renderItem={(book) => <CartItem book={book} handleQuantityChange={handleQuantityChange} />}
+      renderItem={(book) => (
+        <CartItem
+          book={book}
+          handleQuantityChange={handleQuantityChange}
+          handleSelectChange={handleSelectChange}
+        />
+      )}
     />
   )
 }
 
-function CartListHeader() {
+function CartListHeader({ allSelected, handleSelectAllChange }) {
+  function handleCheckboxChange() {
+    handleSelectAllChange()
+  }
   return (
     <Row justify={"start"} align="middle">
       <Col flex={"30px"}>
-        <Checkbox />
+        <Checkbox checked={allSelected} onChange={handleCheckboxChange} />
       </Col>
 
       <Col span={2}>

@@ -1,10 +1,14 @@
 import { Row, Col, List, Checkbox, InputNumber } from "antd"
 
-function CartItem({ book, handleQuantityChange }) {
+function CartItem({ book, handleQuantityChange, handleSelectChange }) {
   const totalPrice = (book.price * book.quantity).toFixed(2) // 计算总价
 
   function handleInputNumberChange(value) {
     handleQuantityChange(book.id, value)
+  }
+
+  function handleCheckboxChange() {
+    handleSelectChange(book.id)
   }
 
   return (
@@ -12,7 +16,7 @@ function CartItem({ book, handleQuantityChange }) {
       <Row className="cart-item" justify={"space-between"} align="middle">
         {/* 选择框 */}
         <Col flex={"16px"}>
-          <Checkbox />
+          <Checkbox checked={book.selected} onChange={handleCheckboxChange}/>
         </Col>
 
         {/* 图书封面 */}

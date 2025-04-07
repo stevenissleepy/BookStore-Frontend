@@ -8,6 +8,7 @@ async function getCart() {
     return {
       ...book,
       quantity: item.quantity,
+      selected: false,
     }
   })
 
