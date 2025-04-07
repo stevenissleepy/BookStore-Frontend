@@ -2,8 +2,14 @@ import { List, Row, Col, Checkbox, Button } from "antd"
 
 import CartItem from "./cart_item"
 
-function CartList({ cart }) {
-  return <List itemLayout="horizontal" dataSource={cart} renderItem={(book) => <CartItem book={book} />} />
+function CartList({ cart, handleQuantityChange }) {
+  return (
+    <List
+      itemLayout="horizontal"
+      dataSource={cart}
+      renderItem={(book) => <CartItem book={book} handleQuantityChange={handleQuantityChange} />}
+    />
+  )
 }
 
 function CartListHeader() {
@@ -22,7 +28,6 @@ function CartListHeader() {
           Checkout
         </Button>
       </Col>
-
     </Row>
   )
 }

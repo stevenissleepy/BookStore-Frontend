@@ -98,7 +98,20 @@ const users = [
         address: "456 Elm St, Springfield, USA",
       },
     ],
-    cart: [ "1", "2", "3" ],
+    cart: [ 
+      {
+        id: "1",
+        quantity: 1,
+      },
+      {
+        id: "2",
+        quantity: 1,
+      },
+      {
+        id: "3",
+        quantity: 1,
+      },
+    ],
     orders: [
       {
         receiver: "Jane Doe",

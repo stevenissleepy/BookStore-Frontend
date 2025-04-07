@@ -1,13 +1,14 @@
 import { Row, Col, List, Checkbox, InputNumber } from "antd"
 
-import { useState } from "react"
+function CartItem({ book, handleQuantityChange }) {
+  const totalPrice = (book.price * book.quantity).toFixed(2) // 计算总价
 
-function CartItem({ book }) {
-  const [quantity, setQuantity] = useState(1) // 数量状态
-  const totalPrice = (book.price * quantity).toFixed(2) // 计算总价
+  function handleInputNumberChange(value) {
+    handleQuantityChange(book.id, value)
+  }
 
   return (
-    <List.Item>
+    <List.Item key={book.id}>
       <Row className="cart-item" justify={"space-between"} align="middle">
         {/* 选择框 */}
         <Col flex={"16px"}>
@@ -28,7 +29,7 @@ function CartItem({ book }) {
 
         {/* 数量选择框 */}
         <Col span={4}>
-          <InputNumber min={1} max={99} value={quantity} size="large" onChange={(value) => setQuantity(value)} />
+          <InputNumber min={0} max={99} value={book.quantity} size="large" onChange={handleInputNumberChange} />
         </Col>
 
         {/* 总价 */}
