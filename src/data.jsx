@@ -121,13 +121,8 @@ const users = [
         totalPrice: 18.99,
         books: [
           {
-            id: 1,
-            title: "To Kill a Mockingbird",
-            author: "Harper Lee",
-            price: 18.99,
-            description: "A novel about the serious issues of rape and racial inequality.",
-            cover: "/book-cover.jpg",
-            category: "Fiction",
+            id: "1",
+            quantity: 1,
           },
         ],
       },

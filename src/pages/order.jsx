@@ -1,11 +1,18 @@
+import { useState, useEffect } from "react"
 import { Card, Row, Col } from "antd"
 
 import { MyLayout } from "../components/layout"
 import { OrderList, OrderListHeader } from "../components/order_list"
 
-import { users } from "../data"
+import { getOrders } from "../services/order"
 
 function OrderPage() {
+  const [orders, setOrders] = useState([])
+
+  useEffect(() => {
+    getOrders().then(setOrders)
+  }, [])
+
   return (
     <MyLayout>
       <Row gutter={[0, 20]}>
@@ -19,7 +26,7 @@ function OrderPage() {
         {/* cart list */}
         <Col span={24}>
           <Card variant="borderless">
-            <OrderList orders={users[0].orders} />
+            <OrderList orders={orders} />
           </Card>
         </Col>
       </Row>
