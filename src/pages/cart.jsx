@@ -1,11 +1,19 @@
+import { useState, useEffect } from "react"
 import { Card, Row, Col } from "antd"
 
 import { MyLayout } from "../components/layout"
 import { CartList, CartListHeader } from "../components/cart_list"
 
-import { users } from "../data"
+import { getCart } from "../services/cart"
 
 function CartPage() {
+  const [cart, setCart] = useState([])
+
+  // 初始加载购物车
+  useEffect(() => {
+    getCart().then(setCart)
+  }, [])
+
   return (
     <MyLayout>
       <Row gutter={[0, 20]}>
@@ -19,7 +27,7 @@ function CartPage() {
         {/* cart list */}
         <Col span={24}>
           <Card variant="borderless">
-            <CartList cart={users[0].cart} />
+            <CartList cart={cart} />
           </Card>
         </Col>
       </Row>
