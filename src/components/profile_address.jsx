@@ -10,6 +10,10 @@ function ProfileAddress() {
     getAddresses().then(setAddresses)
   }, [])
 
+  function handleDeleteAddress(id) {
+    setAddresses((prevAddresses) => prevAddresses.filter((address) => address.id !== id))
+  }
+
   return (
     <Card title="常用地址" extra={<Button type="primary">添加</Button>}>
       <Space direction="vertical" style={{ width: "100%" }}>
