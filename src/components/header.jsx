@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom"
 import { UserOutlined, FormOutlined } from "@ant-design/icons"
 import { AccountBookOutlined, LogoutOutlined } from "@ant-design/icons"
 
-const { Header } = Layout
+import { users } from "../data"
 
 function MyHeader() {
   const navigate = useNavigate()
@@ -19,7 +19,7 @@ function MyHeader() {
   const dropMenuItems = [
     {
       key: "nickname",
-      label: "小明",
+      label: users[0].nickname,
       icon: <UserOutlined />,
     },
     {
@@ -29,7 +29,7 @@ function MyHeader() {
     },
     {
       key: "balance",
-      label: `余额100 元`,
+      label: `余额 ${users[0].balance} 元`,
       icon: <AccountBookOutlined />,
     },
     {
@@ -45,7 +45,7 @@ function MyHeader() {
   }
 
   return (
-    <Header className="header">
+    <Layout.Header className="header">
       <Row className="navbar" justify="space-between">
         {/* Logo */}
         <Col flex="120px">
@@ -73,7 +73,7 @@ function MyHeader() {
           </Dropdown>
         </Col>
       </Row>
-    </Header>
+    </Layout.Header>
   )
 }
 

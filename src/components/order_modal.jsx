@@ -12,7 +12,7 @@ function OrderDetailModel({ open, books, onCancel }) {
             <List.Item.Meta
               avatar={<img src={book.cover} style={{ width: "50px", height: "60px", objectFit: "contain" }} />}
               title={<Link to={`/book/${book.id}`}>{book.title}</Link>}
-              description={"数量：" + book.quantity}
+              description= {`数量: ${book.quantity}`}
             />
           </List.Item>
         )}
