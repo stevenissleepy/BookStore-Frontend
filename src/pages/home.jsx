@@ -12,13 +12,8 @@ function HomePage() {
 
   // 初始加载所有 books
   useEffect(() => {
-    async function fetchBooks() {
-      const results = await searchBooks("")
-      setBooks(results)
-    }
-    fetchBooks()
-  }
-  , [])
+    searchBooks.then(setBooks)
+  }, [])
 
   const handleSearch = async (query) => {
     const results = await searchBooks(query)
@@ -30,7 +25,7 @@ function HomePage() {
       <Row>
         {/* search form */}
         <Col span={24}>
-          <SearchBox handleSearch={handleSearch}/>
+          <SearchBox handleSearch={handleSearch} />
         </Col>
 
         {/* book list */}
