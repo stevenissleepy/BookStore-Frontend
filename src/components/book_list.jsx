@@ -4,7 +4,7 @@ import { MenuOutlined } from "@ant-design/icons"
 
 import BookCard from "./book_card"
 
-import { getBookCategories } from "../service/book"
+import { getBookCategories } from "../services/book"
 
 function BookList({ books }) {
   const [categories, setCategories] = useState([])

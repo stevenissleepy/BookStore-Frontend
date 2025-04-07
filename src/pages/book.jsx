@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"
 import { MyLayout } from "../components/layout"
 import BookInfo from "../components/book_info"
 
-import { getBookById } from "../service/book"
+import { getBookById } from "../services/book"
 
 function BookPage() {
   // get book id from url

@@ -5,7 +5,7 @@ import { MyLayout } from "../components/layout"
 import BookList from "../components/book_list"
 import { SearchBox } from "../components/search_box"
 
-import { searchBooks } from "../service/book"
+import { searchBooks } from "../services/book"
 
 function HomePage() {
   const [books, setBooks] = useState([])
