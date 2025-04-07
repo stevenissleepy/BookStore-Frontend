@@ -1,12 +1,23 @@
-import { Row, Col, List, Checkbox} from "antd"
+import { useState } from "react"
+import { Row, Col, List, Checkbox, Button } from "antd"
+import { PlusOutlined } from "@ant-design/icons"
+
+import OrderDetailModel from "./order_modal"
 
 function OrderItem({ order }) {
+  const [showOrderDetailModal, setShowOrderDetailModal] = useState(false)
+
   return (
     <List.Item>
       <Row className="order-item" justify={"start"} align="middle">
-        {/* 下拉框 */}
-        <Col flex={"30px"}>
-          <Checkbox />
+        {/* show detail */}
+        <Col flex={"40px"}>
+          <Button shape="circle" icon={<PlusOutlined />} onClick={() => setShowOrderDetailModal(true)} size="small" />
+          <OrderDetailModel
+            open={showOrderDetailModal}
+            onCancel={() => setShowOrderDetailModal(false)}
+            books={order.books}
+          />
         </Col>
 
         {/* 订单信息 */}
@@ -20,7 +31,7 @@ function OrderItem({ order }) {
         <Col span={2} offset={10}>
           <p className="order-item-price">￥{order.totalPrice}</p>
         </Col>
-        
+
         {/* 日期 */}
         <Col span={2} offset={4}>
           <p className="order-item-date">{order.date}</p>
