@@ -1,4 +1,5 @@
 import { Row, Col, List, Checkbox, InputNumber } from "antd"
+import { Link } from "react-router-dom"
 
 function CartItem({ book, handleQuantityChange, handleSelectChange }) {
   const totalPrice = (book.price * book.quantity).toFixed(2) // 计算总价
@@ -16,7 +17,7 @@ function CartItem({ book, handleQuantityChange, handleSelectChange }) {
       <Row className="cart-item" justify={"space-between"} align="middle">
         {/* 选择框 */}
         <Col flex={"16px"}>
-          <Checkbox checked={book.selected} onChange={handleCheckboxChange}/>
+          <Checkbox checked={book.selected} onChange={handleCheckboxChange} />
         </Col>
 
         {/* 图书封面 */}
@@ -26,7 +27,9 @@ function CartItem({ book, handleQuantityChange, handleSelectChange }) {
 
         {/* 图书信息 */}
         <Col span={14}>
-          <h3 className="cart-item-title">{book.title}</h3>
+          <h3 className="cart-item-title">
+            <Link to={`/book/${book.id}`}>{book.title}</Link>
+          </h3>
           <p className="cart-item-author">{book.author}</p>
           <p className="cart-item-price">单价: ¥{book.price}</p>
         </Col>
