@@ -1,7 +1,9 @@
 import { Col, Row } from "antd"
 
 import { MyLayout } from "../components/layout"
-import { ProfileAddress, ProfileAvatar, ProfileInfo } from "../components/profile"
+import ProfileAvatar from "../components/profile_avatar"
+import ProfileInfo from "../components/profile_info"
+import ProfileAddress from "../components/profile_address"
 
 import { users } from "../data"
 

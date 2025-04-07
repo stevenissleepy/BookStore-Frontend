@@ -1,6 +1,6 @@
 import { useState } from "react"
 import ImgCrop from "antd-img-crop"
-import { Space, Badge, Avatar, Button, Card, Empty, List, Upload } from "antd"
+import { Space, Badge, Avatar, Button, Card, Upload } from "antd"
 import { EditOutlined, PlusOutlined } from "@ant-design/icons"
 
 function ProfileAvatar({ user }) {
@@ -24,6 +24,7 @@ function ProfileAvatar({ user }) {
     return true
   }
 
+  // change the avatar
   const handleChange = () => {
     setEditAvatar(false)
   }
@@ -80,7 +81,11 @@ function ProfileAvatar({ user }) {
               onChange={handleChange}
               withCredentials={true}
             >
-              {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: "100px", height: "100px" }} /> : uploadButton }
+              {imageUrl ? (
+                <img src={imageUrl} alt="avatar" style={{ width: "100px", height: "100px" }} />
+              ) : (
+                uploadButton
+              )}
             </Upload>
           </ImgCrop>
         )}
@@ -92,33 +97,4 @@ function ProfileAvatar({ user }) {
   )
 }
 
-function ProfileInfo({ user }) {
-  return (
-    <Card title="基础信息" variant="borderless">
-      <p>用户名：{user.name}</p>
-      <p>余额：{user.balance}</p>
-    </Card>
-  )
-}
-
-function ProfileAddress({ user }) {
-  return (
-    <Card title="常用地址" extra={<Button type="primary">添加</Button>}>
-      <Space direction="vertical" style={{ width: "100%" }}>
-        {user.addresses.length === 0 && <Empty description="无" />}
-        {user.addresses.length > 0 && (
-          <List
-            dataSource={user.addresses}
-            renderItem={(address) => (
-              <List.Item actions={[<a onClick={() => handleDeleteAddress(address.id)}>删除</a>]}>
-                <List.Item.Meta title={`${address.receiver} ${address.tel}`} description={address.address} />
-              </List.Item>
-            )}
-          />
-        )}
-      </Space>
-    </Card>
-  )
-}
-
-export { ProfileAvatar, ProfileInfo, ProfileAddress }
+export default ProfileAvatar
