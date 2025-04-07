@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { List, Card, Space, Button, Empty } from "antd"
 
-import SaveAdressModal from "./profile_model"
+import SaveAdressModal from "./profile_modal"
 
 import { getAddresses } from "../services/user"
 
