@@ -1,7 +1,9 @@
 import { useState } from "react"
 import ImgCrop from "antd-img-crop"
 import { Space, Badge, Avatar, Button, Card, Upload } from "antd"
-import { EditOutlined, PlusOutlined } from "@ant-design/icons"
+import { EditOutlined } from "@ant-design/icons"
+
+import { UploadButton } from "./buttons"
 
 function ProfileAvatar({ user }) {
   const [editAvatar, setEditAvatar] = useState(false)
@@ -28,19 +30,6 @@ function ProfileAvatar({ user }) {
   const handleChange = () => {
     setEditAvatar(false)
   }
-
-  const uploadButton = (
-    <button
-      style={{
-        border: 0,
-        background: "none",
-      }}
-      type="button"
-    >
-      <PlusOutlined />
-      <div>上传</div>
-    </button>
-  )
 
   return (
     <Card variant="borderless">
@@ -84,7 +73,7 @@ function ProfileAvatar({ user }) {
               {imageUrl ? (
                 <img src={imageUrl} alt="avatar" style={{ width: "100px", height: "100px" }} />
               ) : (
-                uploadButton
+                <UploadButton />
               )}
             </Upload>
           </ImgCrop>
