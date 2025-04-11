@@ -50,15 +50,15 @@ function MyHeader() {
         {/* Logo */}
         <Col flex="120px">
           <Link to="/">
-            <img className="logo" src="/logo-dark.svg" alt="Logo" />
+            <img src="/logo-dark.svg" alt="Logo" style={{width:"100%", height:"100%"}}/>
           </Link>
         </Col>
 
         {/* Menu */}
-        <Col className="menu-container" flex="auto">
+        <Col span={14} style={{ display: "flex", justifyContent: "center" }}>
           <Menu
-            className="menu"
             mode="horizontal"
+            style={{ borderBottom: "none", minWidth:"340px" }}
             defaultSelectedKeys={[selectedKey]}
             selectedKeys={[selectedKey]}
             items={navItems}
@@ -67,7 +67,7 @@ function MyHeader() {
         </Col>
 
         {/* Login buttons */}
-        <Col flex="120px">
+        <Col span={2} style={{ textAlign: "right" }}>
           <Dropdown menu={{ items: dropMenuItems }}>
             <Button shape="circle" icon={<UserOutlined />} />
           </Dropdown>
