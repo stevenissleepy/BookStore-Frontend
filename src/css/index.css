@@ -16,18 +16,14 @@ body {
 
 .navbar {
   align-content: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   height: 100%;
-  max-width: 90%;
-  padding: 0 50px;
+  max-width: 80%;
 }
 
 .content-container {
-  min-height: calc(100vh - 90px);
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 60px;
+  min-height: calc(100vh - 100px);
+  padding: 60px 10%;
   width: 100%;
 }
 
