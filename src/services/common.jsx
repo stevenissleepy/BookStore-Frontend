@@ -31,6 +31,7 @@ async function post(url, data) {
     if (result.code !== 200) {
         throw new Error(result.message || "An error occurred");
     }
+    return result;
 }
 
 async function put(url, data) {

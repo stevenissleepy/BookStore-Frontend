@@ -1,8 +1,21 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { LockOutlined, UserOutlined } from "@ant-design/icons"
 import { LoginFormPage, ProFormText } from "@ant-design/pro-components"
+import { login } from "../services/user"
+import { handleApiResponse } from "../utils/message"
+import useMessage from "antd/es/message/useMessage"
 
 function LoginPage() {
+  const [messageApi, contextHolder] = useMessage()
+  const navigate = useNavigate()
+
+  async function handleSubmit(values) {
+    const { username, password } = values
+    const response = await login(username, password)
+
+    handleApiResponse(response, messageApi, ()=> navigate("/"))
+  }
+
   return (
     <div
       style={{
@@ -17,6 +30,7 @@ function LoginPage() {
         title="BookJar"
         subTitle="电子书城"
         style={{ height: "100vh" }}
+        onFinish={handleSubmit}
       >
         <ProFormText
           name="username"

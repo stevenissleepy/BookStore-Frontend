@@ -1,5 +1,5 @@
 import { users } from "../data"
-import { get, BASE_URL } from "./common"
+import { get, post, BASE_URL } from "./common"
 
 async function getUser() {
   const url = `${BASE_URL}/user`
@@ -27,8 +27,9 @@ async function login(username, password) {
   } catch (e) {
     console.error(e)
     result = {
-      ok: false,
-      message: "网络错误",
+      code: 500,
+      message: "登录失败",
+      data: null,
     }
   }
   return result
