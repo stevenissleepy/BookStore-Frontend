@@ -1,10 +1,10 @@
 import { users } from "../data"
-import { get, post, BASE_URL } from "./common"
+import { get, post, BASE_URL, checkResponse } from "./common"
 
 async function getUser() {
   const url = `${BASE_URL}/user`
   const user = await get(url)
-  return user
+  return user 
 }
 
 function getAddresses() {

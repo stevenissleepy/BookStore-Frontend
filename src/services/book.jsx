@@ -1,15 +1,10 @@
 import { books } from "../data"
-import { get, BASE_URL } from "./common"
+import { get, checkResponse,BASE_URL } from "./common"
 
 async function getAllBooks() {
-  try {
     const url = `${BASE_URL}/book/all`
-    const { books } = await get(url)
-    return books
-  } catch (error) {
-    console.error("Error fetching books:", error)
-    return []
-  }
+    const response = await get(url)
+    return checkResponse(response) ? response.data.books : []
 }
 
 async function getBookById(id) {
