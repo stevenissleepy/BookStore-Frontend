@@ -67,6 +67,6 @@ async function del(url) {
     }
 }
 
-const BASE_URL = process.env.REACT_APP_API_URL ?? "http://localhost:8088";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL ?? "http://localhost:8088";
 
 export { get, post, put, del, BASE_URL };
