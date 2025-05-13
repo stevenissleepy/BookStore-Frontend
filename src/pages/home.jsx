@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Row, Col } from "antd"
 
-import { BaseLayout } from "../components/layout"
+import { UserLayout } from "../components/layout"
 import BookList from "../components/book_list"
 import { SearchBox } from "../components/search_box"
 
@@ -21,7 +21,7 @@ function HomePage() {
   }
 
   return (
-    <BaseLayout>
+    <UserLayout>
       <Row>
         {/* search form */}
         <Col span={24}>
@@ -33,7 +33,7 @@ function HomePage() {
           <BookList books={books} />
         </Col>
       </Row>
-    </BaseLayout>
+    </UserLayout>
   )
 }
 

@@ -3,8 +3,8 @@ import { get, post, BASE_URL, checkResponse } from "./common"
 
 async function getUser() {
   const url = `${BASE_URL}/user`
-  const user = await get(url)
-  return user 
+  const response = await get(url)
+  return checkResponse(response) ? response.data : null
 }
 
 function getAddresses() {
