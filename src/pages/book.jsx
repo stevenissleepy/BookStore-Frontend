@@ -8,13 +8,13 @@ import BookInfo from "../components/book_info"
 import { getBookById } from "../services/book"
 
 function BookPage() {
-  // get book id from url
+  /* get book id from url */
   const { id } = useParams()
 
-  // get book by id
+  /* get book by id */
   const [book, setBook] = useState(null)
   const getBook = useCallback(async () => {
-    let book = await getBookById(id)
+    let book = await getBookById(Number(id))
     setBook(book)
   }, [id])
   useEffect(() => {
