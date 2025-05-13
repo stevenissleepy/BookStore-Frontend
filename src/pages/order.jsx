@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Card, Row, Col } from "antd"
 
-import { BaseLayout } from "../components/layout"
+import { UserLayout } from "../components/layout"
 import { OrderList, OrderListHeader } from "../components/order_list"
 
 import { getOrders } from "../services/order"
@@ -14,7 +14,7 @@ function OrderPage() {
   }, [])
 
   return (
-    <BaseLayout>
+    <UserLayout>
       <Row gutter={[0, 20]}>
         {/* cart title */}
         <Col span={24}>
@@ -30,7 +30,7 @@ function OrderPage() {
           </Card>
         </Col>
       </Row>
-    </BaseLayout>
+    </UserLayout>
   )
 }
 
