@@ -2,7 +2,7 @@ import { Card, Row, Col } from "antd"
 import { useState, useEffect, useCallback } from "react"
 import { useParams } from "react-router-dom"
 
-import { MyLayout } from "../components/layout"
+import { BaseLayout } from "../components/layout"
 import BookInfo from "../components/book_info"
 
 import { getBookById } from "../services/book"
@@ -22,7 +22,7 @@ function BookPage() {
   }, [getBook])
 
   return (
-    <MyLayout>
+    <BaseLayout>
       {book && (
         <Row gutter={[0, 20]} justify={"center"}>
           <Col span={18}>
@@ -32,7 +32,7 @@ function BookPage() {
           </Col>
         </Row>
       )}
-    </MyLayout>
+    </BaseLayout>
   )
 }
 

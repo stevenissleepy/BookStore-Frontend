@@ -5,7 +5,7 @@ import MyFooter from "./footer"
 
 const { Content } = Layout
 
-function MyLayout({ children }) {
+function BaseLayout({ children }) {
   return (
     <Layout className="my-layout">
       <MyHeader />
@@ -17,4 +17,12 @@ function MyLayout({ children }) {
   )
 }
 
-export { MyLayout }
+function UserLayout({ children }) {
+  return (
+    <BaseLayout>
+      {children}
+    </BaseLayout>
+  )
+}
+
+export { BaseLayout }
