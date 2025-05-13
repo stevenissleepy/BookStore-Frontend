@@ -3,12 +3,7 @@ import { get, post, BASE_URL } from "./common"
 
 async function getUser() {
   const url = `${BASE_URL}/user`
-  let user = null
-  try {
-    user = await get(url)
-  } catch (e) {
-    console.error(e)
-  }
+  const user = await get(url)
   return user
 }
 
@@ -20,19 +15,8 @@ function getAddresses() {
 
 async function login(username, password) {
   const url = `${BASE_URL}/user/login`
-  let result
-
-  try {
-    result = await post(url, { username, password })
-  } catch (e) {
-    console.error(e)
-    result = {
-      code: 500,
-      message: "登录失败",
-      data: null,
-    }
-  }
-  return result
+  const response = await post(url, { username, password })
+  return response
 }
 
 export { getUser, getAddresses, login }

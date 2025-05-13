@@ -9,7 +9,7 @@ async function get(url) {
     /* handle response */
     let result = await response.json();
     if (result.code !== 200) {
-        throw new Error(result.message || "An error occurred");
+        console.error(result.message);
     }
     return result.data;
 }
@@ -29,7 +29,7 @@ async function post(url, data) {
     /* handle response */
     let result = await response.json();
     if (result.code !== 200) {
-        throw new Error(result.message || "An error occurred");
+        console.error(result.message);
     }
     return result;
 }
@@ -49,8 +49,9 @@ async function put(url, data) {
     /* handle response */
     let result = await response.json();
     if (result.code !== 200) {
-        throw new Error(result.message || "An error occurred");
+        console.error(result.message);
     }
+    return result;
 }
 
 async function del(url) {
@@ -64,8 +65,9 @@ async function del(url) {
     /* handle response */
     let result = await response.json();
     if (result.code !== 200) {
-        throw new Error(result.message || "An error occurred");
+        console.error(result.message);
     }
+    return result;
 }
 
 const BASE_URL = import.meta.env.VITE_BACKEND_URL ?? "http://localhost:8088";
