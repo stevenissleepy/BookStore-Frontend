@@ -1,4 +1,5 @@
 import { books } from "../data"
+import { get, BASE_URL } from "./common"
 
 function getBookById(id) {
   return new Promise((resolve, reject) => {
@@ -11,17 +12,17 @@ function getBookById(id) {
   })
 }
 
-function getAllBooks() {
-  return new Promise((resolve) => {
-    resolve(books)
-  })
-}
-
-function searchBooks(query) {
-  return new Promise((resolve) => {
-    const filteredBooks = books.filter((book) => book.title.toLowerCase().includes(query.toLowerCase()))
-    resolve(filteredBooks)
-  })
+async function searchBooks(query) {
+  try {
+    const url = `${BASE_URL}/book/all`;
+    const { books } = await get(url);
+    return books.filter((book) =>
+      book.title.toLowerCase().includes(query.toLowerCase())
+    );
+  } catch (error) {
+    console.error("Error fetching books:", error);
+    return [];
+  }
 }
 
 function getBookCategories() {
@@ -31,4 +32,4 @@ function getBookCategories() {
   })
 }
 
-export { getBookById, getAllBooks, searchBooks, getBookCategories }
+export { getBookById, searchBooks, getBookCategories }
