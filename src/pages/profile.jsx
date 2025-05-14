@@ -5,24 +5,33 @@ import ProfileAvatar from "../components/profile_avatar"
 import ProfileInfo from "../components/profile_info"
 import ProfileAddress from "../components/profile_address"
 
-import { users } from "../data"
+import { UserContext } from "../utils/context"
+import { useContext } from "react"
+
+function Profile() {
+  const { user, setUser } = useContext(UserContext)
+
+  return (
+    <Row justify={"center"} gutter={[0, 20]}>
+      <Col span={16}>
+        <ProfileAvatar user={user} />
+      </Col>
+
+      <Col span={16}>
+        <ProfileInfo user={user} />
+      </Col>
+
+      <Col span={16}>
+        <ProfileAddress user={user} />
+      </Col>
+    </Row>
+  )
+}
 
 function ProfilePage() {
   return (
     <UserLayout>
-      <Row justify={"center"} gutter={[0, 20]}>
-        <Col span={16}>
-          <ProfileAvatar user={users[0]} />
-        </Col>
-
-        <Col span={16}>
-          <ProfileInfo user={users[0]} />
-        </Col>
-
-        <Col span={16}>
-          <ProfileAddress user={users[0]} />
-        </Col>
-      </Row>
+      <Profile />
     </UserLayout>
   )
 }
