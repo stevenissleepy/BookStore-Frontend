@@ -1,4 +1,3 @@
-import { users } from "../data"
 import { get, post, BASE_URL, checkResponse } from "./common"
 
 async function getUser() {
