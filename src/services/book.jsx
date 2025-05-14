@@ -1,10 +1,9 @@
-import { books } from "../data"
-import { get, checkResponse,BASE_URL } from "./common"
+import { get, checkResponse, BASE_URL } from "./common"
 
 async function getAllBooks() {
-    const url = `${BASE_URL}/book/all`
-    const response = await get(url)
-    return checkResponse(response) ? response.data.books : []
+  const url = `${BASE_URL}/book/all`
+  const response = await get(url)
+  return checkResponse(response) ? response.data.books : []
 }
 
 async function getBookById(id) {
@@ -19,11 +18,11 @@ async function searchBooks(query) {
   )
 }
 
-function getBookCategories() {
-  return new Promise((resolve) => {
-    const categories = [...new Set(books.map((book) => book.category))]
-    resolve(categories)
-  })
+async function getBookCategories() {
+  const allBooks = await getAllBooks()
+  const categories = new Set()
+  allBooks.forEach((book) => categories.add(book.category))
+  return Array.from(categories)
 }
 
 export { getBookById, searchBooks, getBookCategories }
