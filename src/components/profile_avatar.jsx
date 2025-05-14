@@ -80,7 +80,7 @@ function ProfileAvatar({ user }) {
         )}
 
         {/* nickname */}
-        <span style={{ fontSize: 20 }}>{user.nickname}</span>
+        <span style={{ fontSize: 20 }}>{user.username}</span>
       </Space>
     </Card>
   )
