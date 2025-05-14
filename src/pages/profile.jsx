@@ -22,7 +22,7 @@ function Profile() {
       </Col>
 
       <Col span={16}>
-        <ProfileAddress user={user} />
+        <ProfileAddress/>
       </Col>
     </Row>
   )

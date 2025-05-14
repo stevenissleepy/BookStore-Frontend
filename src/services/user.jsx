@@ -7,10 +7,10 @@ async function getUser() {
   return checkResponse(response) ? response.data : null
 }
 
-function getAddresses() {
-  return new Promise((resolve) => {
-    resolve(users[0].addresses)
-  })
+async function getAddresses() {
+  const url = `${BASE_URL}/address`
+  const response = await get(url)
+  return checkResponse(response) ? response.data.addresses : null
 }
 
 async function login(username, password) {
