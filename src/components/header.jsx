@@ -3,9 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom"
 import { UserOutlined, FormOutlined } from "@ant-design/icons"
 import { AccountBookOutlined, LogoutOutlined } from "@ant-design/icons"
 
-import { users } from "../data"
-
-function MyHeader() {
+function MyHeader({ user = null }) {
   const navigate = useNavigate()
   const parts = useLocation().pathname.split("/")
   const selectedKey = "/" + parts[parts.length - 1]
@@ -19,24 +17,27 @@ function MyHeader() {
   const dropMenuItems = [
     {
       key: "nickname",
-      label: users[0].nickname,
+      label: user ? user.username : "未登录",
       icon: <UserOutlined />,
     },
     {
       key: "password",
       label: "修改密码",
       icon: <FormOutlined />,
+      disabled: !user,
     },
     {
       key: "balance",
-      label: `余额 ${users[0].balance} 元`,
+      label: user ? `余额 ${user.balance} 元` : "余额未知",
       icon: <AccountBookOutlined />,
+      disabled: !user,
     },
     {
       key: "/logout",
       label: "登出",
       icon: <LogoutOutlined />,
       danger: true,
+      disabled: !user,
     },
   ]
 
@@ -50,7 +51,11 @@ function MyHeader() {
         {/* Logo */}
         <Col flex="120px">
           <Link to="/">
-            <img src="/logo-dark.svg" alt="Logo" style={{width:"100%", height:"100%"}}/>
+            <img
+              src="/logo-dark.svg"
+              alt="Logo"
+              style={{ width: "100%", height: "100%" }}
+            />
           </Link>
         </Col>
 
@@ -58,7 +63,7 @@ function MyHeader() {
         <Col span={14} style={{ display: "flex", justifyContent: "center" }}>
           <Menu
             mode="horizontal"
-            style={{ borderBottom: "none", minWidth:"340px" }}
+            style={{ borderBottom: "none", minWidth: "340px" }}
             defaultSelectedKeys={[selectedKey]}
             selectedKeys={[selectedKey]}
             items={navItems}

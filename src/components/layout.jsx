@@ -9,11 +9,11 @@ import { getUser } from "../services/user"
 
 const { Content } = Layout
 
-function BaseLayout({ children, contextHolder=null }) {
+function BaseLayout({ children, contextHolder = null, user = null }) {
   return (
     <Layout className="my-layout">
       {contextHolder}
-      <MyHeader />
+      <MyHeader user={user} />
       <Content className="content-container">{children}</Content>
       <MyFooter />
     </Layout>
@@ -44,7 +44,7 @@ function UserLayout({ children }) {
   }, [])
 
   return (
-    <BaseLayout contextHolder={contextHolder}>
+    <BaseLayout contextHolder={contextHolder} user={user}>
       <UserContext.Provider value={{ user, setUser }}>
         {user && children}
       </UserContext.Provider>
