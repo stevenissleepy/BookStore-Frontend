@@ -1,20 +1,9 @@
-import { getBookById } from "./book"
-import { users } from "../data"
+import { get, BASE_URL, checkResponse } from "./common"
 
 async function getCart() {
-  const user = users[0]
-  const cartPromises = user.cart.map(async (item) => {
-    const book = await getBookById(item.id) // 等待书籍数据解析
-    return {
-      ...book,
-      quantity: item.quantity,
-      selected: false,
-    }
-  })
-
-  // 等待所有异步操作完成
-  const cart = await Promise.all(cartPromises)
-  return cart
+  const url = `${BASE_URL}/cart`
+  const response = await get(url)
+  return checkResponse(response) ? response.data.cart : []
 }
 
 export { getCart }

@@ -7,9 +7,10 @@ function CartList({ cart, handleQuantityChange, handleSelectChange }) {
     <List
       itemLayout="horizontal"
       dataSource={cart}
-      renderItem={(book) => (
+      renderItem={(cartItem) => (
         <CartItem
-          book={book}
+          book={cartItem.book}
+          quantity={cartItem.quantity}
           handleQuantityChange={handleQuantityChange}
           handleSelectChange={handleSelectChange}
         />

@@ -1,8 +1,8 @@
 import { Row, Col, List, Checkbox, InputNumber } from "antd"
 import { Link } from "react-router-dom"
 
-function CartItem({ book, handleQuantityChange, handleSelectChange }) {
-  const totalPrice = (book.price * book.quantity).toFixed(2) // 计算总价
+function CartItem({ book, quantity, handleQuantityChange, handleSelectChange }) {
+  const totalPrice = (book.price * quantity).toFixed(2) // 计算总价
 
   function handleInputNumberChange(value) {
     handleQuantityChange(book.id, value)
@@ -36,7 +36,7 @@ function CartItem({ book, handleQuantityChange, handleSelectChange }) {
 
         {/* 数量选择框 */}
         <Col span={4}>
-          <InputNumber min={0} max={99} value={book.quantity} size="large" onChange={handleInputNumberChange} />
+          <InputNumber min={0} max={99} value={quantity} size="large" onChange={handleInputNumberChange} />
         </Col>
 
         {/* 总价 */}
