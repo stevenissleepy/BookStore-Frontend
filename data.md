@@ -80,11 +80,11 @@
 {
   "orders": [
     {
-      "address": {
-        "receiver": "Jane Doe",
-        "phone": "1234567890",
-        "address": "123 Main St, Springfield, USA"
-      },
+      "receiver": "Jane Doe",
+      "phone": "1234567890",
+      "address": "123 Main St, Springfield, USA",
+      "date": "2025-05-14",
+      "totalPrice": 182.0,
       "orderItems": [
         {
           "book": {
@@ -101,8 +101,6 @@
           "quantity": 2
         }
       ],
-      "totalPrice": 182.0,
-      "date": "2025-05-14"
     }
   ]
 }
