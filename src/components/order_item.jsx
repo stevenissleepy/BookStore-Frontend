@@ -23,7 +23,7 @@ function OrderItem({ order }) {
         {/* 订单信息 */}
         <Col span={5}>
           <h3 className="order-item-receiver">{order.address.receiver}</h3>
-          <p className="order-item-tel">{order.address.phone}</p>
+          <p className="order-item-phone">{order.address.phone}</p>
           <p className="order-item-address">{order.address.address}</p>
         </Col>
 

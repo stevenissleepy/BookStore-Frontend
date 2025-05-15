@@ -82,7 +82,7 @@
     {
       "address": {
         "receiver": "Jane Doe",
-        "tel": "1234567890",
+        "phone": "1234567890",
         "address": "123 Main St, Springfield, USA"
       },
       "orderItems": [

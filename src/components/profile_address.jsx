@@ -26,14 +26,13 @@ function ProfileAddress() {
   }
 
   function saveAddress(receiver, phone, address) {
-    addAddress(receiver, phone, address).then((response) => {
-      handleApiResponse(
-        response,
-        messageApi,
-        () => getAddresses().then(setAddresses),
+    addAddress(receiver, phone, address)
+      .then((response) =>
+        handleApiResponse(response, messageApi, () =>
+          getAddresses().then(setAddresses)
+        )
       )
-    }
-  )
+      .finally(() => setShowSaveAddressModal(false));
   }
 
   function cancelSaveAddress() {

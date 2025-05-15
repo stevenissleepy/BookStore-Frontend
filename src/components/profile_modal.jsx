@@ -5,8 +5,8 @@ function SaveAddressModal({ onOk, onCancel }) {
   const [form] = Form.useForm()
 
   function handleSubmit(values) {
-    const { receiver, tel, address } = values
-    onOk( receiver, tel, address )
+    const { receiver, phone, address } = values
+    onOk( receiver, phone, address )
   }
 
   return (
