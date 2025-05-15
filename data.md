@@ -100,7 +100,24 @@
           },
           "quantity": 2
         }
-      ],
+      ]
+    }
+  ]
+}
+```
+
+# Address
+
+获取全部地址 `getAddresses()`
+
+```json
+{
+  "addresses": [
+    {
+      "id": 1,
+      "receiver": "Steven Yuan",
+      "phone": "19888444503",
+      "address": "No 800 Dongchuan Road "
     }
   ]
 }
