@@ -16,7 +16,7 @@ function SaveAddressModal({ onOk, onCancel }) {
           <Input />
         </Form.Item>
 
-        <Form.Item name="tel" label="联系电话" required>
+        <Form.Item name="phone" label="联系电话" required>
           <Input />
         </Form.Item>
         

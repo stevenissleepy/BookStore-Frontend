@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react"
-import { List, Card, Space, Button, Empty } from "antd"
+import { List, Card, Space, Button, Empty, message } from "antd"
 
 import SaveAdressModal from "./profile_modal"
 
-import { getAddresses } from "../services/user"
+import { getAddresses, addAddress } from "../services/address"
+import { handleApiResponse } from "../utils/message"
 
 function ProfileAddress() {
   const [addresses, setAddresses] = useState([])
   const [showSaveAddressModal, setShowSaveAddressModal] = useState(false)
+  const [messageApi, contextHolder] = message.useMessage()
 
-  // Function to display user addresses
+  /* Function to display user addresses */
   useEffect(() => {
     getAddresses().then(setAddresses)
   }, [])
@@ -18,20 +20,20 @@ function ProfileAddress() {
     setAddresses((prevAddresses) => prevAddresses.filter((address) => address.id !== id))
   }
 
-  // Function to handle the addition of a new address
+  /* Function to handle the addition of a new address */
   function handleAddAddress() {
     setShowSaveAddressModal(true)
   }
 
   function saveAddress(receiver, phone, address) {
-    const newAddress = {
-      id: addresses.length + 1,
-      receiver,
-      phone,
-      address,
+    addAddress(receiver, phone, address).then((response) => {
+      handleApiResponse(
+        response,
+        messageApi,
+        () => getAddresses().then(setAddresses),
+      )
     }
-    setAddresses((prevAddresses) => [...prevAddresses, newAddress])
-    setShowSaveAddressModal(false)
+  )
   }
 
   function cancelSaveAddress() {
