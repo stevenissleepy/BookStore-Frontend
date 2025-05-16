@@ -19,7 +19,7 @@ function CartList({ cart, handleQuantityChange, handleSelectChange }) {
   )
 }
 
-function CartListHeader({ allSelected, handleSelectAllChange }) {
+function CartListHeader({ allSelected, handleSelectAllChange, handleCheckout }) {
   function handleCheckboxChange() {
     handleSelectAllChange()
   }
@@ -34,7 +34,7 @@ function CartListHeader({ allSelected, handleSelectAllChange }) {
       </Col>
 
       <Col span={1} offset={19}>
-        <Button type="primary" size="large">
+        <Button type="primary" size="large" onClick={handleCheckout}>
           Checkout
         </Button>
       </Col>

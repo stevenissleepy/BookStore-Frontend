@@ -41,9 +41,7 @@ function ProfileAddress() {
   return (
     <>
       {/* save address modal */}
-      {showSaveAddressModal && (
-        <SaveAdressModal visible={showSaveAddressModal} onCancel={cancelSaveAddress} onOk={saveAddress} />
-      )}
+      <SaveAdressModal open={showSaveAddressModal} onCancel={cancelSaveAddress} onOk={saveAddress} />
 
       {/* address list */}
       <Card

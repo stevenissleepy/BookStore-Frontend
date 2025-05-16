@@ -10,12 +10,12 @@ function CartPage() {
   const [cart, setCart] = useState([])
   const [allSelected, setAllSelected] = useState(false)
 
-  // 初始加载购物车
+  /* 初始加载购物车 */
   useEffect(() => {
     getCart().then(setCart)
   }, [])
 
-  // 更改商品数量
+  /* 更改商品数量 */
   function handleQuantityChange(id, quantity) {
     setCart((prevCart) => {
       const updatedCart = prevCart
@@ -25,7 +25,7 @@ function CartPage() {
     })
   }
 
-  // 更改商品选中状态
+  /* 更改商品选中状态 */
   function handleSelectChange(id) {
     setCart((prevCart) => {
       const updatedCart = prevCart.map((item) => (item.id === id ? { ...item, selected: !item.selected } : item))
