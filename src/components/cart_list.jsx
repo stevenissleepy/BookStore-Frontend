@@ -1,9 +1,11 @@
-import { List, Row, Col, Checkbox, Button } from "antd"
-
+import { List, Row, Col, Checkbox, Button, message } from "antd"
 import { useState } from "react"
 
 import CartItem from "./cart_item"
 import CheckoutModal from "./checkout_modal"
+
+import { checkout } from "../services/order"
+import { handleApiResponse } from "../utils/message"
 
 function CartList({ cart, handleQuantityChange, handleSelectChange }) {
   return (
@@ -24,15 +26,29 @@ function CartList({ cart, handleQuantityChange, handleSelectChange }) {
 
 function CartListHeader({ allSelected, handleSelectAllChange }) {
   const [showModal, setShowModal] = useState(false)
+  const [messageApi, contextHolder] = message.useMessage()
 
   function handleCheckboxChange() {
     handleSelectAllChange()
   }
 
+  function handleCheckoutOk(address) {
+    checkout(address.receiver, address.phone, address.address)
+      .then((ok) => handleApiResponse(ok, messageApi, "下单成功", "下单失败"))
+      .finally(() => {
+        window.location.reload()
+        setShowModal(false)
+      })
+  }
+  function handleCheckoutCancel() {
+    setShowModal(false)
+  }
+
   return (
     <>
-      <CheckoutModal open={showModal} onOk={() => setShowModal(false)} onCancel={() => setShowModal(false)} />
+      <CheckoutModal open={showModal} onOk={handleCheckoutOk} onCancel={handleCheckoutCancel} />
 
+      {contextHolder}
       <Row justify={"start"} align="middle">
         <Col flex={"30px"}>
           <Checkbox checked={allSelected} onChange={handleCheckboxChange} />
