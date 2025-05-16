@@ -1,4 +1,4 @@
-import { get, BASE_URL, checkResponse } from "./common"
+import { get, post, BASE_URL, checkResponse } from "./common"
 
 async function getCart() {
   const url = `${BASE_URL}/cart`
@@ -6,4 +6,10 @@ async function getCart() {
   return checkResponse(response) ? response.data.cart : []
 }
 
-export { getCart }
+async function addToCart(bookId, quantity) {
+  const url = `${BASE_URL}/cart`
+  const response = await post(url, { bookId, quantity })
+  return checkResponse(response)
+}
+
+export { getCart, addToCart }

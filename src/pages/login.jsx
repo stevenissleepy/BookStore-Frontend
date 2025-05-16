@@ -11,9 +11,9 @@ function LoginPage() {
 
   async function handleSubmit(values) {
     const { username, password } = values
-    const response = await login(username, password)
-
-    handleApiResponse(response, messageApi, ()=> navigate("/"))
+    login(username, password).then((ok) =>
+      handleApiResponse(ok, messageApi, "登录成功", "登录失败", () => navigate("/"))
+    )
   }
 
   return (

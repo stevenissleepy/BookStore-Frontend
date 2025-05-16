@@ -9,7 +9,7 @@ async function getUser() {
 async function login(username, password) {
   const url = `${BASE_URL}/user/login`
   const response = await post(url, { username, password })
-  return response
+  return checkResponse(response)
 }
 
 export { getUser, login }

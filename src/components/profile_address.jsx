@@ -3,7 +3,7 @@ import { List, Card, Space, Button, Empty, message } from "antd"
 
 import SaveAdressModal from "./profile_modal"
 
-import { getAddresses, addAddress } from "../services/address"
+import { getAddresses, addAddress, deleteAddress } from "../services/address"
 import { handleApiResponse } from "../utils/message"
 
 function ProfileAddress() {
@@ -16,8 +16,10 @@ function ProfileAddress() {
     getAddresses().then(setAddresses)
   }, [])
 
+  /* Function to handle the delete of an address */
   function handleDeleteAddress(id) {
-    setAddresses((prevAddresses) => prevAddresses.filter((address) => address.id !== id))
+    const onOk = () => getAddresses().then(setAddresses)
+    deleteAddress(id).then((ok) => handleApiResponse(ok, messageApi, null, null, onOk))
   }
 
   /* Function to handle the addition of a new address */
@@ -26,13 +28,10 @@ function ProfileAddress() {
   }
 
   function saveAddress(receiver, phone, address) {
+    const onOk = () => getAddresses().then(setAddresses)
     addAddress(receiver, phone, address)
-      .then((response) =>
-        handleApiResponse(response, messageApi, () =>
-          getAddresses().then(setAddresses)
-        )
-      )
-      .finally(() => setShowSaveAddressModal(false));
+      .then((ok) => handleApiResponse(ok, messageApi, null, null, onOk))
+      .finally(() => setShowSaveAddressModal(false))
   }
 
   function cancelSaveAddress() {

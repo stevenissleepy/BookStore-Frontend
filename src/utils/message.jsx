@@ -1,10 +1,10 @@
-async function handleApiResponse(response, messageApi, onSuccess, onFail) {
-  if(response.code === 200) {
-    messageApi.success(response.message);
-    if (onSuccess) onSuccess();
+async function handleApiResponse(ok, messageApi, successMsg, failMsg,  onOk, onFail) {
+  if(ok === 200) {
+    successMsg && messageApi.success(successMsg, 0.5);
+    onSuccess && onSuccess();
   }else {
-    messageApi.error(response.message);
-    if (onFail) onFail();
+    failMsg && messageApi.error(failMsg, 0.5);
+    onFail && onFail();
   }
 }
 
