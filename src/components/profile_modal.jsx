@@ -1,5 +1,4 @@
 import { Button, Form, Input, Modal } from "antd"
-import React from "react"
 
 function SaveAddressModal({ onOk, onCancel }) {
   const [form] = Form.useForm()
@@ -10,7 +9,7 @@ function SaveAddressModal({ onOk, onCancel }) {
   }
 
   return (
-    <Modal title={"添加新地址"} open onOk={onOk} onCancel={onCancel} footer={null} width={800}>
+    <Modal title={"添加新地址"} onOk={onOk} onCancel={onCancel} footer={null} width={800}>
       <Form form={form} layout="vertical" onFinish={handleSubmit} preserve={false}>
         <Form.Item name="receiver" label="收货人" required>
           <Input />
