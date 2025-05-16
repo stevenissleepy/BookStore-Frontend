@@ -1,7 +1,7 @@
 async function handleApiResponse(ok, messageApi, successMsg, failMsg,  onOk, onFail) {
-  if(ok === 200) {
+  if(ok) {
     successMsg && messageApi.success(successMsg, 0.5);
-    onSuccess && onSuccess();
+    onOk && onOk();
   }else {
     failMsg && messageApi.error(failMsg, 0.5);
     onFail && onFail();
