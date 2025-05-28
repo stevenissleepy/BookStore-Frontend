@@ -1,6 +1,6 @@
 import { Row, Col, Image, Space, Button, Descriptions } from "antd"
 
-function BookInfo({ book, handleAddToCart }) {
+function BookInfo({ book, handleAddToCart, handleBuyNow }) {
   return (
     <Row justify={"space-around"}>
       <Col span={9} style={{ display: "flex", alignItems: "center" }}>
@@ -21,9 +21,7 @@ function BookInfo({ book, handleAddToCart }) {
 
         <Space style={{ marginTop: 26 }}>
           <Button size="large" onClick={handleAddToCart}>加入购物车</Button>
-          <Button type="primary" size="large">
-            立即购买
-          </Button>
+          <Button type="primary" size="large" onClick={handleBuyNow}>立即购买</Button>
         </Space>
       </Col>
     </Row>
