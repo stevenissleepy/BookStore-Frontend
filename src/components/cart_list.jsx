@@ -1,13 +1,15 @@
 import { List, Row, Col, Checkbox, Button, message } from "antd"
-import { useState } from "react"
+import { useContext, useState } from "react"
 
 import CartItem from "./cart_item"
 import CheckoutModal from "./checkout_modal"
 
 import { checkout } from "../services/order"
 import { handleApiResponse } from "../utils/message"
+import { CartContext } from "../utils/context"
 
-function CartList({ cart, handleQuantityChange, handleSelectChange }) {
+function CartList() {
+  const { cart, handleQuantityChange, handleSelectChange } = useContext(CartContext) 
   return (
     <List
       itemLayout="horizontal"
@@ -23,7 +25,8 @@ function CartList({ cart, handleQuantityChange, handleSelectChange }) {
   )
 }
 
-function CartListHeader({ allSelected, handleSelectAllChange }) {
+function CartListHeader() {
+  const { cart, allSelected, handleSelectAllChange } = useContext(CartContext)
   const [showModal, setShowModal] = useState(false)
   const [messageApi, contextHolder] = message.useMessage()
 

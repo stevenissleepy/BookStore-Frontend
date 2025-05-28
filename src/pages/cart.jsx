@@ -5,6 +5,7 @@ import { UserLayout } from "../components/layout"
 import { CartList, CartListHeader } from "../components/cart_list"
 
 import { getCart } from "../services/cart"
+import { CartContext } from "../utils/context"
 
 function CartPage() {
   const [cart, setCart] = useState([])
@@ -58,21 +59,25 @@ function CartPage() {
 
   return (
     <UserLayout>
-      <Row gutter={[0, 20]}>
-        {/* cart title */}
-        <Col span={24}>
-          <Card variant="borderless">
-            <CartListHeader allSelected={allSelected} handleSelectAllChange={handleSelectAllChange} />
-          </Card>
-        </Col>
+      <CartContext.Provider
+        value={{ cart, handleQuantityChange, handleSelectChange, allSelected, handleSelectAllChange }}
+      >
+        <Row gutter={[0, 20]}>
+          {/* cart title */}
+          <Col span={24}>
+            <Card variant="borderless">
+              <CartListHeader />
+            </Card>
+          </Col>
 
-        {/* cart list */}
-        <Col span={24}>
-          <Card variant="borderless">
-            <CartList cart={cart} handleQuantityChange={handleQuantityChange} handleSelectChange={handleSelectChange} />
-          </Card>
-        </Col>
-      </Row>
+          {/* cart list */}
+          <Col span={24}>
+            <Card variant="borderless">
+              <CartList />
+            </Card>
+          </Col>
+        </Row>
+      </CartContext.Provider>
     </UserLayout>
   )
 }
