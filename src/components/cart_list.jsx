@@ -14,8 +14,7 @@ function CartList({ cart, handleQuantityChange, handleSelectChange }) {
       dataSource={cart}
       renderItem={(cartItem) => (
         <CartItem
-          book={cartItem.book}
-          quantity={cartItem.quantity}
+          cartItem={cartItem}
           handleQuantityChange={handleQuantityChange}
           handleSelectChange={handleSelectChange}
         />

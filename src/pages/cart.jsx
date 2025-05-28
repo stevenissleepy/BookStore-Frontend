@@ -12,7 +12,14 @@ function CartPage() {
 
   /* 初始加载购物车 */
   useEffect(() => {
-    getCart().then(setCart)
+    getCart().then((cartItems) => {
+      setCart(
+        cartItems.map((item) => ({
+          ...item,
+          selected: false,
+        }))
+      )
+    })
   }, [])
 
   /* 更改商品数量 */
