@@ -34,10 +34,10 @@ function CartListHeader() {
     handleSelectAllChange()
   }
 
-  function handleCheckoutOk(address) {
+  function handleCheckoutOk(addr) {
     const bookIds = cart.filter((item) => item.selected).map((item) => item.book.id)
-    const { receiver, tel, add } = address
-    checkout(receiver, tel, add, bookIds)
+    const { receiver, tel, address } = addr
+    checkout(receiver, tel, address, bookIds)
       .then((ok) => handleApiResponse(ok, messageApi, "下单成功", "下单失败"))
       .finally(() => {
         window.location.reload()
