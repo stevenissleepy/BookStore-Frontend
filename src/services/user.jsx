@@ -12,4 +12,10 @@ async function login(username, password) {
   return checkResponse(response)
 }
 
-export { getUser, login }
+async function logout() {
+  const url = `${BASE_URL}/user/logout`
+  const response = await post(url, null)
+  return checkResponse(response)
+}
+
+export { getUser, login, logout }

@@ -3,6 +3,8 @@ import { Link, useNavigate, useLocation } from "react-router-dom"
 import { UserOutlined, FormOutlined } from "@ant-design/icons"
 import { AccountBookOutlined, LogoutOutlined } from "@ant-design/icons"
 
+import { logout } from "../services/user"
+
 function MyHeader({ user = null }) {
   const navigate = useNavigate()
   const parts = useLocation().pathname.split("/")
@@ -33,7 +35,7 @@ function MyHeader({ user = null }) {
       disabled: !user,
     },
     {
-      key: "/logout",
+      key: "logout",
       label: "登出",
       icon: <LogoutOutlined />,
       danger: true,
@@ -41,8 +43,14 @@ function MyHeader({ user = null }) {
     },
   ]
 
-  const handleMenuClick = (e) => {
+  function handleMenuClick(e) {
     navigate(e.key)
+  }
+
+  function handleDropMenuClick({ key }) {
+    if (key === "logout") {
+      logout().then(() => navigate("/login"))
+    }
   }
 
   return (
@@ -51,11 +59,7 @@ function MyHeader({ user = null }) {
         {/* Logo */}
         <Col flex="120px">
           <Link to="/">
-            <img
-              src="/logo-dark.svg"
-              alt="Logo"
-              style={{ width: "100%", height: "100%" }}
-            />
+            <img src="/logo-dark.svg" alt="Logo" style={{ width: "100%", height: "100%" }} />
           </Link>
         </Col>
 
@@ -73,7 +77,7 @@ function MyHeader({ user = null }) {
 
         {/* Login buttons */}
         <Col span={2} style={{ textAlign: "right" }}>
-          <Dropdown menu={{ items: dropMenuItems }}>
+          <Dropdown menu={{ items: dropMenuItems, onClick: handleDropMenuClick }}>
             <Button shape="circle" icon={<UserOutlined />} />
           </Dropdown>
         </Col>
