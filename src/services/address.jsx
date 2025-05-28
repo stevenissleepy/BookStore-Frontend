@@ -6,9 +6,9 @@ async function getAddresses() {
   return checkResponse(response) ? response.data.addresses : null
 }
 
-async function addAddress(receiver, phone, address) {
+async function addAddress(receiver, tel, address) {
   const url = `${BASE_URL}/address`
-  const response = await post(url, { receiver, phone, address })
+  const response = await post(url, { receiver, tel, address })
   return checkResponse(response)
 }
 

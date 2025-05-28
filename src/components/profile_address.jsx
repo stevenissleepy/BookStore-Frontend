@@ -27,9 +27,9 @@ function ProfileAddress() {
     setShowSaveAddressModal(true)
   }
 
-  function saveAddress(receiver, phone, address) {
+  function saveAddress(receiver, tel, address) {
     const onOk = () => getAddresses().then(setAddresses)
-    addAddress(receiver, phone, address)
+    addAddress(receiver, tel, address)
       .then((ok) => handleApiResponse(ok, messageApi, null, null, onOk))
       .finally(() => setShowSaveAddressModal(false))
   }
@@ -59,7 +59,7 @@ function ProfileAddress() {
               dataSource={addresses}
               renderItem={(address) => (
                 <List.Item actions={[<a onClick={() => handleDeleteAddress(address.id)}>删除</a>]}>
-                  <List.Item.Meta title={`${address.receiver} ${address.phone}`} description={address.address} />
+                  <List.Item.Meta title={`${address.receiver} ${address.tel}`} description={address.address} />
                 </List.Item>
               )}
             />

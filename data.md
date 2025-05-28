@@ -81,7 +81,7 @@
   "orders": [
     {
       "receiver": "Jane Doe",
-      "phone": "1234567890",
+      "tel": "1234567890",
       "address": "123 Main St, Springfield, USA",
       "date": "2025-05-14",
       "totalPrice": 182.0,
@@ -116,7 +116,7 @@
     {
       "id": 1,
       "receiver": "Steven Yuan",
-      "phone": "19888444503",
+      "tel": "19888444503",
       "address": "No 800 Dongchuan Road "
     }
   ]

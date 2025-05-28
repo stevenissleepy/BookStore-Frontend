@@ -4,8 +4,8 @@ function SaveAddressModal({ open, onOk, onCancel }) {
   const [form] = Form.useForm()
 
   function handleSubmit(values) {
-    const { receiver, phone, address } = values
-    onOk( receiver, phone, address )
+    const { receiver, tel, address } = values
+    onOk( receiver, tel, address )
   }
 
   return (
@@ -15,7 +15,7 @@ function SaveAddressModal({ open, onOk, onCancel }) {
           <Input />
         </Form.Item>
 
-        <Form.Item name="phone" label="联系电话" required>
+        <Form.Item name="tel" label="联系电话" required>
           <Input />
         </Form.Item>
         

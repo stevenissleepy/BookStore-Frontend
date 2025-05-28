@@ -6,9 +6,9 @@ async function getOrders() {
   return checkResponse(response) ? response.data.orders : []
 }
 
-async function checkout(receiver, phone, address) {
+async function checkout(receiver, tel, address, bookIds) {
   const url = `${BASE_URL}/order`
-  const response = await post(url, { receiver, phone, address })
+  const response = await post(url, { receiver, tel, address, bookIds })
   return checkResponse(response)
 }
 

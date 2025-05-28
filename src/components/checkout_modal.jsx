@@ -45,7 +45,7 @@ function RadioAddress({ address }) {
         <div style={{ flex: 1 }}>
           <div style={{ fontWeight: 500, fontSize: 16, marginBottom: 4 }}>
             {address.receiver}
-            <span style={{ color: "#888", fontSize: 14, marginLeft: 12 }}>{address.phone}</span>
+            <span style={{ color: "#888", fontSize: 14, marginLeft: 12 }}>{address.tel}</span>
           </div>
           <div style={{ color: "#666", fontSize: 14 }}>{address.address}</div>
         </div>

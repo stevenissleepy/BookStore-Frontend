@@ -9,7 +9,7 @@ import { handleApiResponse } from "../utils/message"
 import { CartContext } from "../utils/context"
 
 function CartList() {
-  const { cart, handleQuantityChange, handleSelectChange } = useContext(CartContext) 
+  const { cart, handleQuantityChange, handleSelectChange } = useContext(CartContext)
   return (
     <List
       itemLayout="horizontal"
@@ -35,7 +35,9 @@ function CartListHeader() {
   }
 
   function handleCheckoutOk(address) {
-    checkout(address.receiver, address.phone, address.address)
+    const bookIds = cart.filter((item) => item.selected).map((item) => item.book.id)
+    const { receiver, tel, add } = address
+    checkout(receiver, tel, add, bookIds)
       .then((ok) => handleApiResponse(ok, messageApi, "下单成功", "下单失败"))
       .finally(() => {
         window.location.reload()
