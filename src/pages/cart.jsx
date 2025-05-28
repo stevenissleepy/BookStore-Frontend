@@ -4,8 +4,8 @@ import { Card, Row, Col } from "antd"
 import { UserLayout } from "../components/layout"
 import { CartList, CartListHeader } from "../components/cart_list"
 
-import { getCart } from "../services/cart"
 import { CartContext } from "../utils/context"
+import { getCart, updateCartItem } from "../services/cart"
 
 function CartPage() {
   const [cart, setCart] = useState([])
@@ -25,11 +25,15 @@ function CartPage() {
 
   /* 更改商品数量 */
   function handleQuantityChange(id, quantity) {
-    setCart((prevCart) => {
-      const updatedCart = prevCart
-        .map((item) => (item.book.id === id ? { ...item, quantity: quantity } : item))
-        .filter((item) => item.quantity > 0)
-      return updatedCart
+    updateCartItem(id, quantity).then((ok) => {
+      if (ok) {
+        setCart((prevCart) => {
+          const updatedCart = prevCart
+            .map((item) => (item.book.id === id ? { ...item, quantity: quantity } : item))
+            .filter((item) => item.quantity > 0)
+          return updatedCart
+        })
+      }
     })
   }
 

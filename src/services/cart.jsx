@@ -12,4 +12,10 @@ async function addToCart(bookId, quantity) {
   return checkResponse(response)
 }
 
-export { getCart, addToCart }
+async function updateCartItem(bookId, quantity) {
+  const url = `${BASE_URL}/cart/update`
+  const response = await post(url, { bookId, quantity })
+  return checkResponse(response)
+}
+
+export { getCart, addToCart, updateCartItem }
