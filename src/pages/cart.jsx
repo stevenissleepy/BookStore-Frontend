@@ -26,7 +26,7 @@ function CartPage() {
   function handleQuantityChange(id, quantity) {
     setCart((prevCart) => {
       const updatedCart = prevCart
-        .map((item) => (item.id === id ? { ...item, quantity: quantity } : item))
+        .map((item) => (item.book.id === id ? { ...item, quantity: quantity } : item))
         .filter((item) => item.quantity > 0)
       return updatedCart
     })
@@ -35,7 +35,7 @@ function CartPage() {
   /* 更改商品选中状态 */
   function handleSelectChange(id) {
     setCart((prevCart) => {
-      const updatedCart = prevCart.map((item) => (item.id === id ? { ...item, selected: !item.selected } : item))
+      const updatedCart = prevCart.map((item) => (item.book.id === id ? { ...item, selected: !item.selected } : item))
 
       // 检查是否所有商品都被选中
       const allSelected = updatedCart.every((item) => item.selected)

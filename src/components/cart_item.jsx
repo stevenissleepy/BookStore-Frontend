@@ -2,19 +2,19 @@ import { Row, Col, List, Checkbox, InputNumber } from "antd"
 import { Link } from "react-router-dom"
 
 function CartItem({ cartItem, handleQuantityChange, handleSelectChange }) {
-  const { id, book, quantity, selected } = cartItem
+  const { book, quantity, selected } = cartItem
   const totalPrice = (book.price * cartItem.quantity).toFixed(2) // 计算总价
 
   function handleInputNumberChange(value) {
-    handleQuantityChange(id, value)
+    handleQuantityChange(book.id, value)
   }
 
   function handleCheckboxChange() {
-    handleSelectChange(id)
+    handleSelectChange(book.id)
   }
 
   return (
-    <List.Item key={cartItem.id}>
+    <List.Item key={book.id}>
       <Row className="cart-item" justify={"space-between"} align="middle">
         {/* 选择框 */}
         <Col flex={"16px"}>
