@@ -1,5 +1,7 @@
 import { Row, Col, Button } from "antd"
 
+import AdminBookListItem from "./admin_book_list_item"
+
 function AdminBookListHeader() {
   return (
     <Row justify={"start"} align="middle">
@@ -18,8 +20,18 @@ function AdminBookListHeader() {
   )
 }
 
-function AdminBookList() {
-  
+function AdminBookList(books) {
+  return (
+    <List
+      itemLayout="horizontal"
+      dataSource={books}
+      renderItem={(book) => (
+        <AdminBookListItem
+          book={book}
+        />
+      )}
+    />
+  )
 }
 
 export { AdminBookListHeader, AdminBookList }

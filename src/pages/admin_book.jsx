@@ -3,7 +3,7 @@ import { Row, Col, Card } from "antd"
 import { UserLayout } from "../components/layout"
 import { AdminBookList, AdminBookListHeader } from "../components/admin_book_list"
 
-function AdminBookPage(){
+function AdminBookPage() {
   return (
     <UserLayout>
       <Row gutter={[0, 20]}>
@@ -17,6 +17,7 @@ function AdminBookPage(){
         {/* cart list */}
         <Col span={24}>
           <Card variant="borderless">
+            <AdminBookList />
           </Card>
         </Col>
       </Row>
