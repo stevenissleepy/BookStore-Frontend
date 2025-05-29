@@ -234,3 +234,9 @@ body {
   margin-top: 0;
   margin-bottom: 1rem;
 }
+
+/* admin-book-list */
+.admin-book-list-header-title {
+  font-size: 18px;
+  font-weight: 500;
+}

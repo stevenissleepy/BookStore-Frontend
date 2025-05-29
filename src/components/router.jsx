@@ -6,6 +6,7 @@ import ProfilePage from "../pages/profile"
 import CartPage from "../pages/cart"
 import OrderPage from "../pages/order"
 import BookPage from "../pages/book"
+import AdminBookPage from "../pages/admin_book"
 
 function AppRouter() {
   return (
@@ -18,11 +19,7 @@ function AppRouter() {
         <Route path="/order" element={<OrderPage />} />
         <Route path="/book/:id" element={<BookPage />} />
 
-        {/* 
-          <Route path="/rank" element={<RankPage />} />
-          <Route path="/course" element={<CoursePage />} />
-          <Route path="/profile/:id" element={<OtherUserProfilePage />} />
-          <Route path="/api-docs" element={<ApiPage />} /> */}
+        <Route path="/admin/book" element={<AdminBookPage />} />
       </Routes>
     </BrowserRouter>
   )

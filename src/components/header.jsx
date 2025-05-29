@@ -14,6 +14,7 @@ function MyHeader({ user = null }) {
     { label: "PROFILE", key: "/profile" },
     { label: "CART", key: "/cart" },
     { label: "ORDER", key: "/order" },
+    { label: "MANAGE", key: "/admin/book"}
   ]
 
   const dropMenuItems = [
