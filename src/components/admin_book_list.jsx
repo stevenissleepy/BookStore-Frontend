@@ -1,4 +1,4 @@
-import { Row, Col, Button } from "antd"
+import { Row, Col, Button, List } from "antd"
 
 import AdminBookListItem from "./admin_book_list_item"
 
@@ -20,15 +20,13 @@ function AdminBookListHeader() {
   )
 }
 
-function AdminBookList(books) {
+function AdminBookList({ books }) {
   return (
     <List
       itemLayout="horizontal"
       dataSource={books}
       renderItem={(book) => (
-        <AdminBookListItem
-          book={book}
-        />
+        <AdminBookListItem book={book}/>
       )}
     />
   )

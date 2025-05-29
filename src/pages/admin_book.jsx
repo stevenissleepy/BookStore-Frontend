@@ -1,9 +1,18 @@
+import { useEffect, useState } from "react"
 import { Row, Col, Card } from "antd"
 
 import { UserLayout } from "../components/layout"
 import { AdminBookList, AdminBookListHeader } from "../components/admin_book_list"
 
+import { searchBooks } from "../services/book"
+
 function AdminBookPage() {
+  const [books, setBooks] = useState([])
+
+  useEffect(() => {
+    searchBooks("").then(setBooks)
+  }, [])
+
   return (
     <UserLayout>
       <Row gutter={[0, 20]}>
@@ -17,7 +26,7 @@ function AdminBookPage() {
         {/* cart list */}
         <Col span={24}>
           <Card variant="borderless">
-            <AdminBookList />
+            <AdminBookList books={books}/>
           </Card>
         </Col>
       </Row>
