@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 function CartItem({ cartItem, handleQuantityChange, handleSelectChange }) {
   const { book, quantity, selected } = cartItem
-  const totalPrice = (book.price * cartItem.quantity).toFixed(2) // 计算总价
+  const totalPrice = ((book.price * cartItem.quantity) / 100).toFixed(2) // 计算总价
 
   function handleInputNumberChange(value) {
     handleQuantityChange(book.id, value)
@@ -32,7 +32,7 @@ function CartItem({ cartItem, handleQuantityChange, handleSelectChange }) {
             <Link to={`/book/${book.id}`}>{book.title}</Link>
           </h3>
           <p className="cart-item-author">{book.author}</p>
-          <p className="cart-item-price">单价: ¥{book.price}</p>
+          <p className="cart-item-price">单价: ¥{(book.price / 100).toFixed(2)}</p>
         </Col>
 
         {/* 数量选择框 */}

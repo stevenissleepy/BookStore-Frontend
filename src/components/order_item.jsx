@@ -29,7 +29,7 @@ function OrderItem({ order }) {
 
         {/* 总价 */}
         <Col span={2} offset={10}>
-          <p className="order-item-price">￥{order.totalPrice}</p>
+          <p className="order-item-price">￥{(order.totalPrice / 100).toFixed(2)}</p>
         </Col>
 
         {/* 日期 */}

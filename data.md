@@ -29,7 +29,7 @@
       "category": "心理学",
       "language": "中文",
       "isbn": "9787553522838",
-      "price": 68.0,
+      "price": 6800,
       "cover": "data:image/png;base64,..."
     },
     {
@@ -40,7 +40,7 @@
       "category": "心理学",
       "language": "中文",
       "isbn": "9787201161693",
-      "price": 38.0,
+      "price": 3800,
       "cover": "data:image/png;base64,"
     }
   ]
@@ -63,7 +63,7 @@
         "category": "心理学",
         "language": "中文",
         "isbn": "9787201161693",
-        "price": 38.0,
+        "price": 3800,
         "cover": "data:image/png;base64,"
       },
       "quantity": 2
@@ -84,7 +84,7 @@
       "tel": "1234567890",
       "address": "123 Main St, Springfield, USA",
       "date": "2025-05-14",
-      "totalPrice": 182.0,
+      "totalPrice": 18200,
       "orderItems": [
         {
           "book": {
@@ -95,7 +95,7 @@
             "category": "心理学",
             "language": "中文",
             "isbn": "9787201161693",
-            "price": 38.0,
+            "price": 3800,
             "cover": "data:image/png;base64,"
           },
           "quantity": 2

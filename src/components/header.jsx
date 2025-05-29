@@ -30,7 +30,7 @@ function MyHeader({ user = null }) {
     },
     {
       key: "balance",
-      label: user ? `余额 ${user.balance} 元` : "余额未知",
+      label: user ? `余额 ${(user.balance / 100).toFixed(2)} 元` : "余额未知",
       icon: <AccountBookOutlined />,
       disabled: !user,
     },

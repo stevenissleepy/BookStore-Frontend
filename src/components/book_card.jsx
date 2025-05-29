@@ -12,7 +12,7 @@ function BookCard({ book }) {
           </div>
         }
       >
-        <Card.Meta title={book.title} description={`${book.price} 元`} />
+        <Card.Meta title={book.title} description={`${(book.price / 100).toFixed(2)} 元`} />
       </Card>
     </Link>
   )

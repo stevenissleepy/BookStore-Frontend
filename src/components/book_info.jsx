@@ -9,7 +9,7 @@ function BookInfo({ book, handleAddToCart, handleBuyNow }) {
 
       <Col span={14}>
         <h2 className="book-info-title">{book.title}</h2>
-        <div className="book-info-price"> ￥{book.price}</div>
+        <div className="book-info-price"> ￥{(book.price / 100).toFixed(2)}</div>
         <div className="book-info-description"> {book.description}</div>
 
         <Descriptions column={1} layout="horizontal" size="small">
