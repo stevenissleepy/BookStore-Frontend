@@ -1,4 +1,4 @@
-import { get, post, checkResponse, BASE_URL } from "./common"
+import { get, post, del, checkResponse, BASE_URL } from "./common"
 
 async function getAllBooks() {
   const url = `${BASE_URL}/book/all`
@@ -13,9 +13,7 @@ async function getBookById(id) {
 
 async function searchBooks(query) {
   const allBooks = await getAllBooks()
-  return allBooks.filter((book) =>
-    book.title.toLowerCase().includes(query.toLowerCase())
-  )
+  return allBooks.filter((book) => book.title.toLowerCase().includes(query.toLowerCase()))
 }
 
 async function getBookCategories() {
@@ -26,9 +24,15 @@ async function getBookCategories() {
 }
 
 async function uploadBook(bookData) {
-  const url = `${BASE_URL}/book/add`
+  const url = `${BASE_URL}/book`
   const response = await post(url, bookData)
   return checkResponse(response)
 }
 
-export { getBookById, searchBooks, getBookCategories, uploadBook }
+async function deleteBook(id) {
+  const url = `${BASE_URL}/book/${id}`
+  const response = await del(url)
+  return checkResponse(response)
+}
+
+export { getBookById, searchBooks, getBookCategories, uploadBook, deleteBook }

@@ -1,7 +1,14 @@
 import { Row, Col, List, Button } from "antd"
 import { Link } from "react-router-dom"
 
+import { deleteBook } from "../services/book"
+
 function AdminBookListItem({ book }) {
+  async function handleDelete() {
+    await deleteBook(book.id)
+    window.location.reload()
+  }
+
   return (
     <List.Item key={book.id}>
       <Row className="admin-book-list-item" justify={"space-between"} align="middle">
@@ -23,7 +30,7 @@ function AdminBookListItem({ book }) {
         </Col>
 
         <Col span={2} offset={4}>
-          <Button danger> 删除 </Button>
+          <Button danger onClick={handleDelete}> 删除 </Button>
         </Col>
       </Row>
     </List.Item>
