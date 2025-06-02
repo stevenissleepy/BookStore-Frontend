@@ -22,11 +22,7 @@ function AdminBookListItem({ book }) {
           <p className="admin-book-list-item-price">单价: ¥{(book.price / 100).toFixed(2)}</p>
         </Col>
 
-        <Col span={1} offset={3}>
-          <Button> 编辑 </Button>
-        </Col>
-
-        <Col span={2}>
+        <Col span={2} offset={4}>
           <Button danger> 删除 </Button>
         </Col>
       </Row>
