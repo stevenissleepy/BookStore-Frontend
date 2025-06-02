@@ -40,6 +40,7 @@ function BookUploadModal({ open, setOpen }) {
     }
     await uploadBook(bookData)
     setOpen(false)
+    window.location.reload()
     form.resetFields()
     setBase64Image(null)
   }
