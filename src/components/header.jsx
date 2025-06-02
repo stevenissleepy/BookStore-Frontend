@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import { Layout, Row, Col, Menu, Dropdown, Button } from "antd"
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { UserOutlined, FormOutlined } from "@ant-design/icons"
@@ -9,15 +10,16 @@ function MyHeader({ user = null }) {
   const navigate = useNavigate()
   const parts = useLocation().pathname.split("/")
   const selectedKey = "/" + parts[parts.length - 1]
-  const navItems = [
-    { label: "HOME", key: "/" },
-    { label: "PROFILE", key: "/profile" },
-    { label: "CART", key: "/cart" },
-    { label: "ORDER", key: "/order" },
-    { label: "MANAGE", key: "/admin/book"}
+
+  /* user 的菜单栏 */
+  const userNavItems = [
+    { label: "HOME", key: "/", location: "/" },
+    { label: "PROFILE", key: "/profile", location: "/profile" },
+    { label: "CART", key: "/cart", location: "/cart" },
+    { label: "ORDER", key: "/order", location: "/order" },
   ]
 
-  const dropMenuItems = [
+  const userDropMenuItems = [
     {
       key: "nickname",
       label: user ? user.username : "未登录",
@@ -44,8 +46,51 @@ function MyHeader({ user = null }) {
     },
   ]
 
+  /* admin 的菜单栏 */
+  const adminNavItems = [
+    { label: "HOME", key: "/", location: "/" },
+    { label: "BOOKS", key: "/book", location: "/admin/book" },
+  ]
+
+  const adminDropMenuItems = [
+    {
+      key: "nickname",
+      label: user ? user.username : "未登录",
+      icon: <UserOutlined />,
+    },
+    {
+      key: "password",
+      label: "修改密码",
+      icon: <FormOutlined />,
+      disabled: !user,
+    },
+    {
+      key: "logout",
+      label: "登出",
+      icon: <LogoutOutlined />,
+      danger: true,
+      disabled: !user,
+    },
+  ]
+
+  /* 根据用户角色设置菜单栏和下拉菜单 */
+  const [navItems, setNavItems] = useState([])
+  const [dropMenuItems, setDropMenuItems] = useState([])
+  useEffect(() => {
+    if(user) {
+      if (user.role === "admin") {
+        setNavItems(adminNavItems)
+        setDropMenuItems(adminDropMenuItems)
+      } else {
+        setNavItems(userNavItems)
+        setDropMenuItems(userDropMenuItems)
+      }
+    }
+  }, [user])
+
   function handleMenuClick(e) {
-    navigate(e.key)
+    const item = navItems.find(item => item.key === e.key)
+    navigate(item.location) 
   }
 
   function handleDropMenuClick({ key }) {
