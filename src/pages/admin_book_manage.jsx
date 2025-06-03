@@ -6,7 +6,7 @@ import { AdminBookList, AdminBookListHeader } from "../components/admin_book_lis
 
 import { searchBooks } from "../services/book"
 
-function AdminBookPage() {
+function AdminBookManagePage() {
   const [books, setBooks] = useState([])
 
   useEffect(() => {
@@ -39,4 +39,4 @@ function AdminBookPage() {
   )
 }
 
-export default AdminBookPage
+export default AdminBookManagePage
