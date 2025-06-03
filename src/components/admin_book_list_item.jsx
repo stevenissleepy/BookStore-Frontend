@@ -34,7 +34,9 @@ function AdminBookListItem({ book }) {
 
           {/* 图书信息 */}
           <Col span={4}>
-            <h3 className="admin-book-list-item-title">{book.title}</h3>
+            <h3 className="admin-book-list-item-title">
+              <Link to={`/admin/book/${book.id}`}>{book.title}</Link>
+            </h3>
             <p className="admin-book-list-item-author">{book.author}</p>
             <p className="admin-book-list-item-price">单价: ¥{(book.price / 100).toFixed(2)}</p>
           </Col>

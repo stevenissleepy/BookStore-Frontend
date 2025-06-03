@@ -1,9 +1,15 @@
+import { useContext } from "react"
 import { Card } from "antd"
 import { Link } from "react-router-dom"
 
+import { UserContext } from "../utils/context"
+
 function BookCard({ book }) {
+  const { user } = useContext(UserContext)
+  const path = user.username === "admin" ? `/admin/book/${book.id}` : `/book/${book.id}`
+
   return (
-    <Link to={`/book/${book.id}`}>
+    <Link to={path}>
       <Card
         hoverable
         cover={

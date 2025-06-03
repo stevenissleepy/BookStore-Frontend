@@ -95,7 +95,7 @@ function UserHeader({ user = null }) {
 function AdminHeader({ user = null }) {
   const adminNavItems = [
     { label: "HOME", key: "/admin", location: "/admin" },
-    { label: "BOOKS", key: "/book", location: "/admin/book" },
+    { label: "BOOKS", key: "/book-manage", location: "/admin/book-manage" },
   ]
 
   const adminDropMenuItems = [
