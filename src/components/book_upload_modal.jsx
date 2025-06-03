@@ -36,6 +36,7 @@ function BookUploadModal({ open, setOpen, book = null }) {
       title: values.title,
       author: values.author,
       price: parseFloat(values.price) * 100,
+      stock: values.stock,
       category: values.category,
       language: values.language,
       description: values.description,
@@ -44,8 +45,7 @@ function BookUploadModal({ open, setOpen, book = null }) {
     }
 
     if (book) {
-      bookData.id = book.id
-      await updateBook(bookData)
+      await updateBook({ ...bookData, id: book.id })
     } else {
       await uploadBook(bookData)
     }
@@ -67,8 +67,19 @@ function BookUploadModal({ open, setOpen, book = null }) {
           <Input />
         </Form.Item>
 
-        <Form.Item name="price" label="单价" rules={[{ required: true, message: "请输入单价" }]}>
+        <Form.Item
+          name="price"
+          label="单价"
+          rules={[
+            { required: true, message: "请输入单价" },
+            { pattern: /^\d+(\.\d{1,2})?$/, message: "请输入有效的价格" },
+          ]}
+        >
           <Input />
+        </Form.Item>
+
+        <Form.Item name="stock" label="库存" rules={[{ required: true, message: "请输入库存" }]}>
+          <Input type="number" min={0}/>
         </Form.Item>
 
         <Form.Item name="category" label="分类" rules={[{ required: true, message: "请输入分类" }]}>
