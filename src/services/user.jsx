@@ -18,9 +18,9 @@ async function logout() {
   return checkResponse(response)
 }
 
-async function register(username, password) {
+async function register(username, password, email) {
   const url = `${BASE_URL}/user/register`
-  const response = await post(url, { username, password })
+  const response = await post(url, { username, password, email })
   checkResponse(response)
   return response.message
 }

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-import { LockOutlined, UserOutlined } from "@ant-design/icons"
+import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons"
 import { LoginFormPage, ProFormText } from "@ant-design/pro-components"
 import { register } from "../services/user"
 import useMessage from "antd/es/message/useMessage"
@@ -9,8 +9,8 @@ function RegisterPage() {
   const navigate = useNavigate()
 
   async function handleSubmit(values) {
-    const { username, password } = values
-    register(username, password).then((message) => {
+    const { username, password, email } = values
+    register(username, password, email).then((message) => {
       if (message === "注册成功") {
         messageApi.success("注册成功", 0.5).then(() => navigate("/login"))
       } else {
@@ -52,6 +52,24 @@ function RegisterPage() {
             {
               required: true,
               message: "请输入用户名!",
+            },
+          ]}
+        />
+        <ProFormText
+          name="email"
+          fieldProps={{
+            size: "large",
+            prefix: <MailOutlined className={"prefixIcon"} />,
+          }}
+          placeholder={"请输入邮箱"}
+          rules={[
+            {
+              required: true,
+              message: "请输入邮箱！",
+            },
+            {
+              type: "email",
+              message: "请输入有效的邮箱格式！",
             },
           ]}
         />
