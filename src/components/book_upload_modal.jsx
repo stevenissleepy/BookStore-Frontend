@@ -9,6 +9,10 @@ function BookUploadModal({ open, setOpen, book = null }) {
   const [form] = Form.useForm()
   const [base64Image, setBase64Image] = useState(book?.cover || null)
   const [isUploading, setIsUploading] = useState(false)
+  const initialValues = {
+    ...book,
+    price: book?.price ? (book.price / 100).toFixed(2) : undefined,
+  }
 
   function handleCancel() {
     setOpen(false)
@@ -45,7 +49,7 @@ function BookUploadModal({ open, setOpen, book = null }) {
     } else {
       await uploadBook(bookData)
     }
-    
+
     setOpen(false)
     window.location.reload()
     form.resetFields()
@@ -54,7 +58,7 @@ function BookUploadModal({ open, setOpen, book = null }) {
 
   return (
     <Modal title="上传图书" open={open} footer={null} width={800} onCancel={handleCancel}>
-      <Form form={form} onFinish={handleSubmit} layout="vertical" initialValues={book || {}}>
+      <Form form={form} onFinish={handleSubmit} layout="vertical" initialValues={initialValues}>
         <Form.Item name="title" label="书名" rules={[{ required: true, message: "请输入书名" }]}>
           <Input />
         </Form.Item>
