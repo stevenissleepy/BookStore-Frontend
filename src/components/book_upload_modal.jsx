@@ -3,11 +3,11 @@ import { Form, Input, Button, Upload, Modal } from "antd"
 import { UploadOutlined } from "@ant-design/icons"
 
 import { convertToBase64 } from "../utils/image"
-import { uploadBook } from "../services/book"
+import { uploadBook, updateBook } from "../services/book"
 
-function BookUploadModal({ open, setOpen }) {
+function BookUploadModal({ open, setOpen, book = null }) {
   const [form] = Form.useForm()
-  const [base64Image, setBase64Image] = useState(null)
+  const [base64Image, setBase64Image] = useState(book?.cover || null)
   const [isUploading, setIsUploading] = useState(false)
 
   function handleCancel() {
@@ -38,7 +38,14 @@ function BookUploadModal({ open, setOpen }) {
       isbn: values.isbn,
       cover: base64Image,
     }
-    await uploadBook(bookData)
+
+    if (book) {
+      bookData.id = book.id
+      await updateBook(bookData)
+    } else {
+      await uploadBook(bookData)
+    }
+    
     setOpen(false)
     window.location.reload()
     form.resetFields()
@@ -47,7 +54,7 @@ function BookUploadModal({ open, setOpen }) {
 
   return (
     <Modal title="上传图书" open={open} footer={null} width={800} onCancel={handleCancel}>
-      <Form form={form} onFinish={handleSubmit} layout="vertical">
+      <Form form={form} onFinish={handleSubmit} layout="vertical" initialValues={book || {}}>
         <Form.Item name="title" label="书名" rules={[{ required: true, message: "请输入书名" }]}>
           <Input />
         </Form.Item>
