@@ -18,4 +18,10 @@ async function logout() {
   return checkResponse(response)
 }
 
-export { getUser, login, logout }
+async function register(username, password) {
+  const url = `${BASE_URL}/user/register`
+  const response = await post(url, { username, password })
+  return checkResponse(response)
+}
+
+export { getUser, login, logout, register }
