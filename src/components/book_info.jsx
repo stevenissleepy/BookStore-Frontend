@@ -15,7 +15,7 @@ function BookInfo({ book, handleAddToCart, handleBuyNow }) {
         <Descriptions column={1} layout="horizontal" size="small">
           <Descriptions.Item label="Author">{book.author}</Descriptions.Item>
           <Descriptions.Item label="Category">{book.category}</Descriptions.Item>
-          <Descriptions.Item label="ISBN">{book.ISBN}</Descriptions.Item>
+          <Descriptions.Item label="ISBN">{book.isbn}</Descriptions.Item>
           <Descriptions.Item label="Language">{book.language}</Descriptions.Item>
         </Descriptions>
 

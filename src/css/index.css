@@ -280,6 +280,12 @@ body {
   color: #555;
 }
 
+.admin-book-list-item-stock {
+  margin: 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+
 .admin-book-list-item-total {
   font-size: 18px;
   font-weight: 600;

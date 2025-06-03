@@ -33,15 +33,16 @@ function AdminBookListItem({ book }) {
           </Col>
 
           {/* 图书信息 */}
-          <Col span={14}>
-            <h3 className="admin-book-list-item-title">
-              <Link to={`/book/${book.id}`}>{book.title}</Link>
-            </h3>
+          <Col span={4}>
+            <h3 className="admin-book-list-item-title">{book.title}</h3>
             <p className="admin-book-list-item-author">{book.author}</p>
             <p className="admin-book-list-item-price">单价: ¥{(book.price / 100).toFixed(2)}</p>
           </Col>
+          <Col span={2} offset={8}>
+            <p className="admin-book-list-item-stock">库存: {book.stock}</p>
+          </Col>
 
-          <Col span={1} offset={3}>
+          <Col span={1} offset={2}>
             <Button onClick={handleEdit}>编辑</Button>
           </Col>
 
