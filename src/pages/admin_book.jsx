@@ -13,13 +13,18 @@ function AdminBookPage() {
     searchBooks("").then(setBooks)
   }, [])
 
+  async function handleSearch(query) {
+    const result = await searchBooks(query)
+    setBooks(result)
+  }
+
   return (
     <AdminLayout>
       <Row gutter={[0, 20]}>
         {/* cart title */}
         <Col span={24}>
           <Card variant="borderless">
-            <AdminBookListHeader />
+            <AdminBookListHeader onSearch={handleSearch} />
           </Card>
         </Col>
 

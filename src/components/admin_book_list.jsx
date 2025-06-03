@@ -1,11 +1,11 @@
-import { Row, Col, List, FloatButton } from "antd"
+import { Row, Col, List, FloatButton, Input } from "antd"
 import { PlusOutlined } from "@ant-design/icons"
 import { useState } from "react"
 
 import AdminBookListItem from "./admin_book_list_item"
 import BookUploadModal from "./book_upload_modal"
 
-function AdminBookListHeader() {
+function AdminBookListHeader({ onSearch }) {
   const [showModal, setShowModal] = useState(false)
   return (
     <>
@@ -17,6 +17,10 @@ function AdminBookListHeader() {
 
         <Col span={2}>
           <h3 className="admin-book-list-header-title">书籍管理</h3>
+        </Col>
+
+        <Col span={7} offset={14}>
+          <Input.Search placeholder="搜索书籍" allowClear enterButton size="large" onSearch={onSearch} />
         </Col>
       </Row>
     </>
