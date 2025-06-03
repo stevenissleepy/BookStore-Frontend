@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom"
 import { LockOutlined, UserOutlined } from "@ant-design/icons"
 import { LoginFormPage, ProFormText } from "@ant-design/pro-components"
 import { register } from "../services/user"
-import { handleApiResponse } from "../utils/message"
 import useMessage from "antd/es/message/useMessage"
 
 function RegisterPage() {
@@ -11,11 +10,12 @@ function RegisterPage() {
 
   async function handleSubmit(values) {
     const { username, password } = values
-    register(username, password).then((ok) => {
-      function onOk() {
-        navigate("/login")
+    register(username, password).then((message) => {
+      if (message === "注册成功") {
+        messageApi.success("注册成功", 0.5).then(() => navigate("/login"))
+      } else {
+        messageApi.error(message, 0.5)
       }
-      handleApiResponse(ok, messageApi, "注册成功", "注册失败", onOk)
     })
   }
 

@@ -21,7 +21,8 @@ async function logout() {
 async function register(username, password) {
   const url = `${BASE_URL}/user/register`
   const response = await post(url, { username, password })
-  return checkResponse(response)
+  checkResponse(response)
+  return response.message
 }
 
 export { getUser, login, logout, register }
