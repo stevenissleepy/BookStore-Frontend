@@ -1,4 +1,5 @@
-import { Row, Col, Button, List } from "antd"
+import { Row, Col, List, FloatButton } from "antd"
+import { PlusOutlined } from "@ant-design/icons"
 import { useState } from "react"
 
 import AdminBookListItem from "./admin_book_list_item"
@@ -9,18 +10,13 @@ function AdminBookListHeader() {
   return (
     <>
       <BookUploadModal open={showModal} setOpen={setShowModal} />
+      <FloatButton type="primary" icon={<PlusOutlined />} onClick={() => setShowModal(true)} />
 
       <Row justify={"start"} align="middle">
         <Col flex={"20px"}></Col>
 
         <Col span={2}>
           <h3 className="admin-book-list-header-title">书籍管理</h3>
-        </Col>
-
-        <Col span={1} offset={19}>
-          <Button type="primary" size="large" onClick={() => setShowModal(true)}>
-            添加书籍
-          </Button>
         </Col>
       </Row>
     </>
