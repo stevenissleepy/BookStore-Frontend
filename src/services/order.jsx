@@ -23,10 +23,35 @@ async function searchOrders(dateRange, bookTitle) {
   return filteredOrders
 }
 
+async function statsBooks(dateRange) {
+  // 找到符合条件的 orders
+  const orders = await getOrders()
+  const filteredOrders = orders.filter((order) => {
+    return dateRange
+      ? new Date(dateRange[0]) <= new Date(order.date) && new Date(order.date) <= new Date(dateRange[1])
+      : true
+  })
+
+  // 统计书籍
+  const bookStats = []
+  filteredOrders.forEach((order) => {
+    order.orderItems.forEach((item) => {
+      const existingBook = bookStats.find((statsItem) => statsItem.book.id === item.book.id)
+      if (existingBook) {
+        existingBook.quantity += item.quantity
+      } else {
+        bookStats.push(item)
+      }
+    })
+  })
+
+  return bookStats
+}
+
 async function checkout(receiver, tel, address, bookIds) {
   const url = `${BASE_URL}/order`
   const response = await post(url, { receiver, tel, address, bookIds })
   return checkResponse(response)
 }
 
-export { getOrders, checkout, searchOrders }
+export { getOrders, checkout, searchOrders, statsBooks }

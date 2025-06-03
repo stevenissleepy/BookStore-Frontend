@@ -9,6 +9,7 @@ function BaseHeader({ navItems, dropMenuItems }) {
   const navigate = useNavigate()
   const parts = useLocation().pathname.split("/")
   const selectedKey = "/" + parts[parts.length - 1]
+  const menuSpan = navItems.length === 5 ? 7 : 3
 
   function handleMenuClick(e) {
     const item = navItems.find((item) => item.key === e.key)
@@ -32,7 +33,7 @@ function BaseHeader({ navItems, dropMenuItems }) {
         </Col>
 
         {/* Menu */}
-        <Col span={14} style={{ display: "flex", justifyContent: "center" }}>
+        <Col span={menuSpan}>
           <Menu
             mode="horizontal"
             style={{ borderBottom: "none", minWidth: "340px" }}
@@ -60,6 +61,7 @@ function UserHeader({ user = null }) {
     { label: "PROFILE", key: "/profile", location: "/profile" },
     { label: "CART", key: "/cart", location: "/cart" },
     { label: "ORDER", key: "/order", location: "/order" },
+    { label: "STATS", key: "/stats", location: "/stats" },
   ]
 
   const userDropMenuItems = [
