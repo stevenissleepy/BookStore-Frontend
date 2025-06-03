@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Row, Col, Card } from "antd"
 
-import { UserLayout } from "../components/layout"
+import { AdminLayout } from "../components/layout"
 import { AdminBookList, AdminBookListHeader } from "../components/admin_book_list"
 
 import { searchBooks } from "../services/book"
@@ -14,7 +14,7 @@ function AdminBookPage() {
   }, [])
 
   return (
-    <UserLayout>
+    <AdminLayout>
       <Row gutter={[0, 20]}>
         {/* cart title */}
         <Col span={24}>
@@ -30,7 +30,7 @@ function AdminBookPage() {
           </Card>
         </Col>
       </Row>
-    </UserLayout>
+    </AdminLayout>
   )
 }
 

@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react"
 import { Layout, Row, Col, Menu, Dropdown, Button } from "antd"
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { UserOutlined, FormOutlined } from "@ant-design/icons"
@@ -6,91 +5,14 @@ import { AccountBookOutlined, LogoutOutlined } from "@ant-design/icons"
 
 import { logout } from "../services/user"
 
-function MyHeader({ user = null }) {
+function BaseHeader({ navItems, dropMenuItems }) {
   const navigate = useNavigate()
   const parts = useLocation().pathname.split("/")
   const selectedKey = "/" + parts[parts.length - 1]
 
-  /* user 的菜单栏 */
-  const userNavItems = [
-    { label: "HOME", key: "/", location: "/" },
-    { label: "PROFILE", key: "/profile", location: "/profile" },
-    { label: "CART", key: "/cart", location: "/cart" },
-    { label: "ORDER", key: "/order", location: "/order" },
-  ]
-
-  const userDropMenuItems = [
-    {
-      key: "nickname",
-      label: user ? user.username : "未登录",
-      icon: <UserOutlined />,
-    },
-    {
-      key: "password",
-      label: "修改密码",
-      icon: <FormOutlined />,
-      disabled: !user,
-    },
-    {
-      key: "balance",
-      label: user ? `余额 ${(user.balance / 100).toFixed(2)} 元` : "余额未知",
-      icon: <AccountBookOutlined />,
-      disabled: !user,
-    },
-    {
-      key: "logout",
-      label: "登出",
-      icon: <LogoutOutlined />,
-      danger: true,
-      disabled: !user,
-    },
-  ]
-
-  /* admin 的菜单栏 */
-  const adminNavItems = [
-    { label: "HOME", key: "/", location: "/" },
-    { label: "BOOKS", key: "/book", location: "/admin/book" },
-  ]
-
-  const adminDropMenuItems = [
-    {
-      key: "nickname",
-      label: user ? user.username : "未登录",
-      icon: <UserOutlined />,
-    },
-    {
-      key: "password",
-      label: "修改密码",
-      icon: <FormOutlined />,
-      disabled: !user,
-    },
-    {
-      key: "logout",
-      label: "登出",
-      icon: <LogoutOutlined />,
-      danger: true,
-      disabled: !user,
-    },
-  ]
-
-  /* 根据用户角色设置菜单栏和下拉菜单 */
-  const [navItems, setNavItems] = useState([])
-  const [dropMenuItems, setDropMenuItems] = useState([])
-  useEffect(() => {
-    if(user) {
-      if (user.role === "admin") {
-        setNavItems(adminNavItems)
-        setDropMenuItems(adminDropMenuItems)
-      } else {
-        setNavItems(userNavItems)
-        setDropMenuItems(userDropMenuItems)
-      }
-    }
-  }, [user])
-
   function handleMenuClick(e) {
-    const item = navItems.find(item => item.key === e.key)
-    navigate(item.location) 
+    const item = navItems.find((item) => item.key === e.key)
+    navigate(item.location)
   }
 
   function handleDropMenuClick({ key }) {
@@ -132,4 +54,71 @@ function MyHeader({ user = null }) {
   )
 }
 
-export default MyHeader
+function UserHeader({ user = null }) {
+  const userNavItems = [
+    { label: "HOME", key: "/", location: "/" },
+    { label: "PROFILE", key: "/profile", location: "/profile" },
+    { label: "CART", key: "/cart", location: "/cart" },
+    { label: "ORDER", key: "/order", location: "/order" },
+  ]
+
+  const userDropMenuItems = [
+    {
+      key: "nickname",
+      label: user ? user.username : "未登录",
+      icon: <UserOutlined />,
+    },
+    {
+      key: "password",
+      label: "修改密码",
+      icon: <FormOutlined />,
+      disabled: !user,
+    },
+    {
+      key: "balance",
+      label: user ? `余额 ${(user.balance / 100).toFixed(2)} 元` : "余额未知",
+      icon: <AccountBookOutlined />,
+      disabled: !user,
+    },
+    {
+      key: "logout",
+      label: "登出",
+      icon: <LogoutOutlined />,
+      danger: true,
+      disabled: !user,
+    },
+  ]
+
+  return <BaseHeader navItems={userNavItems} dropMenuItems={userDropMenuItems} />
+}
+
+function AdminHeader({ user = null }) {
+  const adminNavItems = [
+    { label: "HOME", key: "/admin", location: "/admin" },
+    { label: "BOOKS", key: "/book", location: "/admin/book" },
+  ]
+
+  const adminDropMenuItems = [
+    {
+      key: "nickname",
+      label: user ? user.username : "未登录",
+      icon: <UserOutlined />,
+    },
+    {
+      key: "password",
+      label: "修改密码",
+      icon: <FormOutlined />,
+      disabled: !user,
+    },
+    {
+      key: "logout",
+      label: "登出",
+      icon: <LogoutOutlined />,
+      danger: true,
+      disabled: !user,
+    },
+  ]
+  return <BaseHeader navItems={adminNavItems} dropMenuItems={adminDropMenuItems} />
+}
+
+export { UserHeader, AdminHeader }
