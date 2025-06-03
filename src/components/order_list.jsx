@@ -20,8 +20,10 @@ function OrderListHeader({ onSearch }) {
         <h3 className="order-header-title">All Orders</h3>
       </Col>
 
-      <Col span={5} offset={9}>
+      <Col span={5} offset={10}>
         <DatePicker.RangePicker
+          size="large"
+          variant="borderless"
           onChange={(dates) => {
             setDateRange(dates)
             onSearch(dates, bookTitle)
@@ -29,7 +31,9 @@ function OrderListHeader({ onSearch }) {
         />
       </Col>
 
-      <Col span={6} offset={1}>
+      <Col flex={"30px"}></Col>
+
+      <Col span={6}>
         <Input.Search
           placeholder="通过书名搜索"
           allowClear
