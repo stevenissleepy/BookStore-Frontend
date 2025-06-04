@@ -34,6 +34,15 @@ function CartListHeader() {
     handleSelectAllChange()
   }
 
+  function handleCheckoutClick() {
+    const selectedItems = cart.filter((item) => item.selected)
+    if (selectedItems.length === 0) {
+      messageApi.error("请至少选择一件商品", 0.7)
+      return
+    }
+    setShowModal(true)
+  }
+
   function handleCheckoutOk(addr) {
     const bookIds = cart.filter((item) => item.selected).map((item) => item.book.id)
     const { receiver, tel, address } = addr
@@ -44,6 +53,7 @@ function CartListHeader() {
         setShowModal(false)
       })
   }
+
   function handleCheckoutCancel() {
     setShowModal(false)
   }
@@ -63,7 +73,7 @@ function CartListHeader() {
         </Col>
 
         <Col span={1} offset={19}>
-          <Button type="primary" size="large" onClick={() => setShowModal(true)}>
+          <Button type="primary" size="large" onClick={handleCheckoutClick}>
             Checkout
           </Button>
         </Col>
