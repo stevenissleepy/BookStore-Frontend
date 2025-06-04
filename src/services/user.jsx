@@ -1,8 +1,14 @@
-import { get, post, BASE_URL, checkResponse } from "./common"
+import { get, post, put, BASE_URL, checkResponse } from "./common"
 
 async function getUser() {
   const url = `${BASE_URL}/user`
   const response = await get(url)
+  return checkResponse(response) ? response.data : null
+}
+
+async function updateUser(data) {
+  const url = `${BASE_URL}/user`
+  const response = await put(url, data)
   return checkResponse(response) ? response.data : null
 }
 
@@ -25,4 +31,4 @@ async function register(username, password, email) {
   return response.message
 }
 
-export { getUser, login, logout, register }
+export { getUser, updateUser, login, logout, register }

@@ -5,29 +5,28 @@ import { EditOutlined } from "@ant-design/icons"
 
 import { UploadButton } from "./buttons"
 
+import { updateUser } from "../services/user"
+import { convertToBase64 } from "../utils/image"
+
 function ProfileAvatar({ user }) {
   const [editAvatar, setEditAvatar] = useState(false)
-  const [imageUrl, setImageUrl] = useState()
+  const [isUploading, setIsUploading] = useState(false)
 
   function handleEditAvatar() {
     setEditAvatar(true)
   }
 
   // check whether upload a valid image
-  function checkUpload(file) {
-    if (file.type !== "image/jpeg" && file.type !== "image/png") {
-      messageApi.error("系统只支持 jpeg 或 png 格式的图片！")
-      return false
-    }
-    if (file.size > 10 * 1024 * 1024) {
-      messageApi.error("图片大小不能超过 10M")
-      return false
-    }
-    return true
+  async function handleImageUpload(file) {
+    setIsUploading(true)
+    const base64 = await convertToBase64(file)
+    await updateUser({ avatar: base64 })
+    setIsUploading(false)
+    return false
   }
 
-  // change the avatar
-  const handleChange = () => {
+  function handleChange() {
+    window.location.reload()
     setEditAvatar(false)
   }
 
@@ -66,15 +65,12 @@ function ProfileAvatar({ user }) {
               listType="picture-circle"
               className="avatar-uploader"
               showUploadList={false}
-              beforeUpload={checkUpload}
+              beforeUpload={handleImageUpload}
               onChange={handleChange}
+              disabled={isUploading}
               withCredentials={true}
             >
-              {imageUrl ? (
-                <img src={imageUrl} alt="avatar" style={{ width: "100px", height: "100px" }} />
-              ) : (
-                <UploadButton />
-              )}
+              <UploadButton />
             </Upload>
           </ImgCrop>
         )}
