@@ -1,3 +1,4 @@
+import { encryptPassword } from "../utils/password"
 import { get, post, put, BASE_URL, checkResponse } from "./common"
 
 async function getUser() {
@@ -14,7 +15,8 @@ async function updateUser(data) {
 
 async function login(username, password) {
   const url = `${BASE_URL}/user/login`
-  const response = await post(url, { username, password })
+  const encryptedPassword = encryptPassword(username, password)
+  const response = await post(url, { username, password: encryptedPassword })
   return checkResponse(response)
 }
 
@@ -26,7 +28,8 @@ async function logout() {
 
 async function register(username, password, email) {
   const url = `${BASE_URL}/user/register`
-  const response = await post(url, { username, password, email })
+  const encryptedPassword = encryptPassword(username, password)
+  const response = await post(url, { username, password: encryptedPassword, email })
   checkResponse(response)
   return response.message
 }
