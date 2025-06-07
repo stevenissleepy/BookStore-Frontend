@@ -1,3 +1,4 @@
+import { addDays } from "../utils/date"
 import { get, post, BASE_URL, checkResponse } from "./common"
 
 async function getOrders() {
@@ -11,7 +12,7 @@ async function searchOrders(dateRange, bookTitle) {
 
   const filteredOrders = orders.filter((order) => {
     const matchesDateRange = dateRange
-      ? new Date(dateRange[0]) <= new Date(order.date) && new Date(order.date) <= new Date(dateRange[1])
+      ? new Date(dateRange[0]) <= new Date(order.date) && new Date(order.date) <= addDays(dateRange[1], 1)
       : true
     const matchesBookTitle = bookTitle
       ? order.orderItems.some((item) => item.book.title.toLowerCase().includes(bookTitle.toLowerCase()))
@@ -28,7 +29,7 @@ async function statsBooks(dateRange) {
   const orders = await getOrders()
   const filteredOrders = orders.filter((order) => {
     return dateRange
-      ? new Date(dateRange[0]) <= new Date(order.date) && new Date(order.date) <= new Date(dateRange[1])
+      ? new Date(dateRange[0]) <= new Date(order.date) && new Date(order.date) <= addDays(dateRange[1], 1)
       : true
   })
 
