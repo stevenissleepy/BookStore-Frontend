@@ -20,6 +20,7 @@
 
 ```json
 {
+  "quantity": 2,
   "books": [
     {
       "id": 1,

@@ -3,17 +3,17 @@ import { get, post, put, del, checkResponse, BASE_URL } from "./common"
 async function getAllBooks() {
   const url = `${BASE_URL}/book/all`
   const response = await get(url)
-  return checkResponse(response) ? response.data.books : []
+  return checkResponse(response) ? response.data : { books: [], quantity: 0 }
 }
 
 async function getBookById(id) {
-  const allBooks = await getAllBooks()
-  return allBooks.find((book) => book.id === id)
+  const { books } = await getAllBooks()
+  return books.find((book) => book.id === id)
 }
 
 async function searchBooks(query, categories) {
-  const allBooks = await getAllBooks()
-  const queryBooks = allBooks.filter((book) => book.title.toLowerCase().includes(query.toLowerCase()))
+  const { books } = await getAllBooks()
+  const queryBooks = books.filter((book) => book.title.toLowerCase().includes(query.toLowerCase()))
   if (!categories || categories.length === 0) {
     return queryBooks
   }
@@ -21,9 +21,9 @@ async function searchBooks(query, categories) {
 }
 
 async function getBookCategories() {
-  const allBooks = await getAllBooks()
+  const { books } = await getAllBooks()
   const categories = new Set()
-  allBooks.forEach((book) => categories.add(book.category))
+  books.forEach((book) => categories.add(book.category))
   return Array.from(categories)
 }
 
