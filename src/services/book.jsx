@@ -7,8 +7,9 @@ async function getAllBooks() {
 }
 
 async function getBookById(id) {
-  const { books } = await getAllBooks()
-  return books.find((book) => book.id === id)
+  const url = `${BASE_URL}/book/${id}`
+  const response = await get(url)
+  return checkResponse(response) ? response.data : null
 }
 
 async function searchBooks(query, categories) {
