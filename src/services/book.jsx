@@ -11,9 +11,13 @@ async function getBookById(id) {
   return allBooks.find((book) => book.id === id)
 }
 
-async function searchBooks(query) {
+async function searchBooks(query, categories) {
   const allBooks = await getAllBooks()
-  return allBooks.filter((book) => book.title.toLowerCase().includes(query.toLowerCase()))
+  const queryBooks = allBooks.filter((book) => book.title.toLowerCase().includes(query.toLowerCase()))
+  if (!categories || categories.length === 0) {
+    return queryBooks
+  }
+  return queryBooks.filter((book) => categories.includes(book.category))
 }
 
 async function getBookCategories() {

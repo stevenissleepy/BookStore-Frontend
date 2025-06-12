@@ -2,30 +2,33 @@ import { useState, useEffect } from "react"
 import { Row, Col } from "antd"
 
 import { UserLayout } from "../components/layout"
-import BookList from "../components/book_list"
-import { SearchBox } from "../components/search_box"
+import { BookList, BookListHeader } from "../components/book_list"
 
 import { searchBooks } from "../services/book"
 
 function HomePage() {
   const [books, setBooks] = useState([])
+  const [query, setQuery] = useState("")
+  const [selectedCategories, setSelectedCategories] = useState([])
 
-  // 初始加载所有 books
   useEffect(() => {
-    searchBooks("").then(setBooks)
+    searchBooks("", []).then(setBooks)
   }, [])
 
-  const handleSearch = async (query) => {
-    const results = await searchBooks(query)
-    setBooks(results)
-  }
+  useEffect(() => {
+    searchBooks(query, selectedCategories).then(setBooks)
+  }, [query, selectedCategories])
 
   return (
     <UserLayout>
       <Row>
         {/* search form */}
         <Col span={24}>
-          <SearchBox handleSearch={handleSearch} />
+          <BookListHeader
+            quantity={books.length}
+            setQuery={setQuery}
+            setSelectedCategories={setSelectedCategories}
+          />
         </Col>
 
         {/* book list */}
