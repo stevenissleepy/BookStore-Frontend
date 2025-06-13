@@ -11,6 +11,7 @@ import StatsPage from "../pages/stats"
 import AdminHomePage from "../pages/admin_home"
 import AdminBookPage from "../pages/admin_book"
 import AdminBookManagePage from "../pages/admin_book_manage"
+import AdminUserManagePage from "../pages/admin_user_manage"
 
 function AppRouter() {
   return (
@@ -28,6 +29,7 @@ function AppRouter() {
         <Route path="/admin" element={<AdminHomePage />} />
         <Route path="/admin/book/:id" element={<AdminBookPage />} />
         <Route path="/admin/book-manage" element={<AdminBookManagePage />} />
+        <Route path="/admin/user-manage" element={<AdminUserManagePage />} />
       </Routes>
     </BrowserRouter>
   )

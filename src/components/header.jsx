@@ -9,7 +9,7 @@ function BaseHeader({ navItems, dropMenuItems }) {
   const navigate = useNavigate()
   const parts = useLocation().pathname.split("/")
   const selectedKey = "/" + parts[parts.length - 1]
-  const menuSpan = navItems.length === 5 ? 7 : 3
+  const menuSpan = navItems.length === 5 ? 7 : 4
 
   function handleMenuClick(e) {
     const item = navItems.find((item) => item.key === e.key)
@@ -98,6 +98,7 @@ function AdminHeader({ user = null }) {
   const adminNavItems = [
     { label: "HOME", key: "/admin", location: "/admin" },
     { label: "BOOKS", key: "/book-manage", location: "/admin/book-manage" },
+    { label: "USERS", key: "/user-manage", location: "/admin/user-manage" },
   ]
 
   const adminDropMenuItems = [
