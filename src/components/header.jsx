@@ -5,11 +5,10 @@ import { AccountBookOutlined, LogoutOutlined } from "@ant-design/icons"
 
 import { logout } from "../services/user"
 
-function BaseHeader({ navItems, dropMenuItems }) {
+function BaseHeader({ navItems, dropMenuItems, menuSpan }) {
   const navigate = useNavigate()
   const parts = useLocation().pathname.split("/")
   const selectedKey = "/" + parts[parts.length - 1]
-  const menuSpan = navItems.length === 5 ? 7 : 6
 
   function handleMenuClick(e) {
     const item = navItems.find((item) => item.key === e.key)
@@ -91,7 +90,7 @@ function UserHeader({ user = null }) {
     },
   ]
 
-  return <BaseHeader navItems={userNavItems} dropMenuItems={userDropMenuItems} />
+  return <BaseHeader navItems={userNavItems} dropMenuItems={userDropMenuItems} menuSpan={7} />
 }
 
 function AdminHeader({ user = null }) {
@@ -100,6 +99,7 @@ function AdminHeader({ user = null }) {
     { label: "BOOKS", key: "/book-manage", location: "/admin/book-manage" },
     { label: "USERS", key: "/user-manage", location: "/admin/user-manage" },
     { label: "ORDERS", key: "/order", location: "/admin/order" },
+    { label: "STATS", key: "/stats", location: "/admin/stats" },
   ]
 
   const adminDropMenuItems = [
@@ -122,7 +122,7 @@ function AdminHeader({ user = null }) {
       disabled: !user,
     },
   ]
-  return <BaseHeader navItems={adminNavItems} dropMenuItems={adminDropMenuItems} />
+  return <BaseHeader navItems={adminNavItems} dropMenuItems={adminDropMenuItems} menuSpan={8} />
 }
 
 export { UserHeader, AdminHeader }
