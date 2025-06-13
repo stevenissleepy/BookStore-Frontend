@@ -10,11 +10,11 @@ function AdminBookManagePage() {
   const [books, setBooks] = useState([])
 
   useEffect(() => {
-    searchBooks("").then(setBooks)
+    searchBooks("", [], 0, 100).then(setBooks)
   }, [])
 
   async function handleSearch(query) {
-    const result = await searchBooks(query)
+    const result = await searchBooks(query, [], 0, 100)
     setBooks(result)
   }
 
