@@ -1,5 +1,7 @@
 import { List, Row, Col } from "antd";
 
+import AdminUserListItem from "./admin_user_list_item";
+
 function AdminUserListHeader() {
   return (
     <Row justify={"start"} align="middle">
@@ -18,9 +20,7 @@ function AdminUserList({ users }) {
       itemLayout="horizontal"
       dataSource={users}
       renderItem={(user) => (
-        <List.Item>
-          <List.Item.Meta title={user.name} description={`Email: ${user.email}`} />
-        </List.Item>
+        <AdminUserListItem user={user} />
       )}
     />
   )
