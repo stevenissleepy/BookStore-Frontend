@@ -10,22 +10,26 @@ import { getCategories } from "../services/book"
 
 function BookList({ books, loadMoreBooks }) {
   return (
-    <Space direction="vertical" style={{ width: "100%" }}>
-      <InfiniteScroll dataLength={books.length} next={loadMoreBooks} hasMore={true} loader={<h4>Loading...</h4>}>
-        <List
-          grid={{ gutter: 16, column: 4 }}
-          dataSource={books.map((book) => ({
-            ...book,
-            key: book.id,
-          }))}
-          renderItem={(book) => (
-            <List.Item>
-              <BookCard book={book} />
-            </List.Item>
-          )}
-        />
-      </InfiniteScroll>
-    </Space>
+    <InfiniteScroll
+      dataLength={books.length}
+      next={loadMoreBooks}
+      hasMore={true}
+      loader={<h4>Loading...</h4>}
+      style={{ width: "100%", overflow: "hidden" }}
+    >
+      <List
+        grid={{ gutter: 16, column: 4 }}
+        dataSource={books.map((book) => ({
+          ...book,
+          key: book.id,
+        }))}
+        renderItem={(book) => (
+          <List.Item>
+            <BookCard book={book} />
+          </List.Item>
+        )}
+      />
+    </InfiniteScroll>
   )
 }
 
