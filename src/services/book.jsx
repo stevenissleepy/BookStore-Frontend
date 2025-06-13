@@ -1,11 +1,5 @@
 import { get, post, put, del, checkResponse, BASE_URL } from "./common"
 
-async function getAllBooks() {
-  const url = `${BASE_URL}/book/all`
-  const response = await get(url)
-  return checkResponse(response) ? response.data : { books: [], quantity: 0 }
-}
-
 async function getBookById(id) {
   const url = `${BASE_URL}/book/${id}`
   const response = await get(url)
