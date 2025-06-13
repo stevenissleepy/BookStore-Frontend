@@ -27,8 +27,8 @@ async function searchUserOrders(dateRange, bookTitle) {
 async function searchAllOrders(dateRange, bookTitle) {
   const url = `${BASE_URL}/order/search/all`
   const data = {
-    startDate: dateRange ? dateRange[0] : null,
-    endDate: dateRange ? dateRange[1] : null,
+    startDate: dateRange ? dateRange[0].format("YYYY-MM-DD") : null,
+    endDate:   dateRange ? dateRange[1].format("YYYY-MM-DD") : null,
     bookTitle: bookTitle || null
   }
 
