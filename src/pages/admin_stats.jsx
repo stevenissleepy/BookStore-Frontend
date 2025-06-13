@@ -1,12 +1,16 @@
+import { Row, Col } from "antd"
+
 import { AdminLayout } from "../components/layout"
+import AdminBookStats from "../components/admin_book_stats"
 
 function AdminStatsPage() {
   return (
     <AdminLayout>
-      <div className="container">
-        <h1>Admin Stats</h1>
-        <p>This page is under construction.</p>
-      </div>
+      <Row justify="center" gutter={[0, 20]}>
+        <Col span={24}>
+          <AdminBookStats />
+        </Col>
+      </Row>
     </AdminLayout>
   )
 }
