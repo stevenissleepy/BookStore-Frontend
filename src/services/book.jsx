@@ -9,7 +9,7 @@ async function getBookById(id) {
 async function searchBooks(query, categories, page, limit) {
   const url = `${BASE_URL}/book/search`
   const response = await post(url, { query, categories, page, limit })
-  return checkResponse(response) ? response.data.books : []
+  return checkResponse(response) ? response.data : { quantity: 0, books: [] }
 }
 
 async function getCategories() {

@@ -11,24 +11,25 @@ function HomePage() {
   const [query, setQuery] = useState("")
   const [selectedCategories, setSelectedCategories] = useState([])
 
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(false)
 
   async function loadMoreBooks() {
-    if (loading) return;
-    setLoading(true);
-    const newBooks = await searchBooks(query, selectedCategories, page, 8);
-    setBooks(books => [...books, ...newBooks]);
-    setPage(page + 1);
-    setLoading(false);
+    if (loading) return
+    setLoading(true)
+    const response = await searchBooks(query, selectedCategories, page, 8)
+    const newBooks = response.books || []
+    setBooks((books) => [...books, ...newBooks])
+    setPage(page + 1)
+    setLoading(false)
   }
 
   useEffect(() => {
-    searchBooks("", [], 0, 8).then(setBooks)
+    searchBooks("", [], 0, 8).then(({ books }) => setBooks(books))
   }, [])
 
   useEffect(() => {
-    searchBooks(query, selectedCategories, 0, 8).then(setBooks)
+    searchBooks(query, selectedCategories, 0, 8).then(({ books }) => setBooks(books))
   }, [query, selectedCategories])
 
   return (
@@ -36,11 +37,7 @@ function HomePage() {
       <Row>
         {/* search form */}
         <Col span={24}>
-          <BookListHeader
-            quantity={books.length}
-            setQuery={setQuery}
-            setSelectedCategories={setSelectedCategories}
-          />
+          <BookListHeader quantity={books.length} setQuery={setQuery} setSelectedCategories={setSelectedCategories} />
         </Col>
 
         {/* book list */}

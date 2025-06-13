@@ -10,12 +10,12 @@ function AdminBookManagePage() {
   const [books, setBooks] = useState([])
 
   useEffect(() => {
-    searchBooks("", [], 0, 100).then(setBooks)
+    searchBooks("", [], 0, 100).then(({ books }) => setBooks(books))
   }, [])
 
   async function handleSearch(query) {
-    const result = await searchBooks(query, [], 0, 100)
-    setBooks(result)
+    const { books } = await searchBooks(query, [], 0, 100)
+    setBooks(books)
   }
 
   return (
@@ -31,7 +31,7 @@ function AdminBookManagePage() {
         {/* cart list */}
         <Col span={24}>
           <Card variant="borderless">
-            <AdminBookList books={books}/>
+            <AdminBookList books={books} />
           </Card>
         </Col>
       </Row>
