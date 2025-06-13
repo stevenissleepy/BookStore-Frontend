@@ -6,7 +6,7 @@ async function getBookById(id) {
   return checkResponse(response) ? response.data : null
 }
 
-async function searchBooks(query, categories, page, limit) {
+async function searchBooks(query, categories, page = 0, limit = 100) {
   const url = `${BASE_URL}/book/search`
   const response = await post(url, { query, categories, page, limit })
   return checkResponse(response) ? response.data : { quantity: 0, books: [] }

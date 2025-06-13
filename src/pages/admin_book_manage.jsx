@@ -14,7 +14,7 @@ function AdminBookManagePage() {
   }, [])
 
   async function handleSearch(query) {
-    const { books } = await searchBooks(query, [], 0, 100)
+    const { books } = await searchBooks(query, [])
     setBooks(books)
   }
 
