@@ -5,7 +5,7 @@ import { MenuOutlined } from "@ant-design/icons"
 import { SearchBox } from "../components/search_box"
 import BookCard from "./book_card"
 
-import { getBookCategories } from "../services/book"
+import { getCategories } from "../services/book"
 
 function BookList({ books }) {
   return (
@@ -30,7 +30,7 @@ function BookListHeader({ quantity, setQuery, setSelectedCategories }) {
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
-    getBookCategories().then(setCategories)
+    getCategories().then(setCategories)
   }, [])
 
   return (

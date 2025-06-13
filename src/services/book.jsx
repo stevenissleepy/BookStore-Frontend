@@ -13,19 +13,15 @@ async function getBookById(id) {
 }
 
 async function searchBooks(query, categories) {
-  const { books } = await getAllBooks()
-  const queryBooks = books.filter((book) => book.title.toLowerCase().includes(query.toLowerCase()))
-  if (!categories || categories.length === 0) {
-    return queryBooks
-  }
-  return queryBooks.filter((book) => categories.includes(book.category))
+  const url = `${BASE_URL}/book/search`
+  const response = await post(url, { query, categories })
+  return checkResponse(response) ? response.data.books : []
 }
 
-async function getBookCategories() {
-  const { books } = await getAllBooks()
-  const categories = new Set()
-  books.forEach((book) => categories.add(book.category))
-  return Array.from(categories)
+async function getCategories() {
+  const url = `${BASE_URL}/book/categories`
+  const response = await get(url)
+  return checkResponse(response) ? response.data.categories : []
 }
 
 async function uploadBook(bookData) {
@@ -46,4 +42,4 @@ async function deleteBook(id) {
   return checkResponse(response)
 }
 
-export { getBookById, searchBooks, getBookCategories, uploadBook, updateBook, deleteBook }
+export { getBookById, searchBooks, getCategories, uploadBook, updateBook, deleteBook }
