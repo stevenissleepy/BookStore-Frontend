@@ -3,6 +3,7 @@ import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons"
 import { LoginFormPage, ProFormText } from "@ant-design/pro-components"
 import { register } from "../services/user"
 import useMessage from "antd/es/message/useMessage"
+import { handleApiResponse } from "../utils/message"
 
 function RegisterPage() {
   const [messageApi, contextHolder] = useMessage()
@@ -10,13 +11,9 @@ function RegisterPage() {
 
   async function handleSubmit(values) {
     const { username, password, email } = values
-    register(username, password, email).then((message) => {
-      if (message === "注册成功") {
-        messageApi.success("注册成功", 0.5).then(() => navigate("/login"))
-      } else {
-        messageApi.error(message, 0.5)
-      }
-    })
+    const response = await register(username, password, email)
+    const onOk = () => navigate("/login")
+    handleApiResponse(response.code === 200, messageApi, "注册成功", response.message, onOk)
   }
 
   return (

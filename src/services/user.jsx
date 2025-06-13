@@ -36,8 +36,7 @@ async function register(username, password, email) {
   const url = `${BASE_URL}/user/register`
   const encryptedPassword = encryptPassword(username, password)
   const response = await post(url, { username, password: encryptedPassword, email })
-  checkResponse(response)
-  return response.message
+  return response
 }
 
 async function banUser(username) {
