@@ -1,24 +1,24 @@
 import { useState, useEffect } from "react"
 import { Card, Row, Col } from "antd"
 
-import { UserLayout } from "../components/layout"
+import { AdminLayout } from "../components/layout"
 import { OrderList, OrderListHeader } from "../components/order_list"
 
-import { getOrders, searchUserOrders } from "../services/order"
+import { searchAllOrders } from "../services/order"
 
-function OrderPage() {
+function AdminOrderPage() {
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
-    getOrders().then(setOrders)
+    searchAllOrders(null, null).then(setOrders)
   }, [])
 
   async function handleSearch(dateRange, bookTitle) {
-    searchUserOrders(dateRange, bookTitle).then(setOrders)
+    searchAllOrders(dateRange, bookTitle).then(setOrders)
   }
 
   return (
-    <UserLayout>
+    <AdminLayout>
       <Row gutter={[0, 20]}>
         {/* cart title */}
         <Col span={24}>
@@ -34,8 +34,8 @@ function OrderPage() {
           </Card>
         </Col>
       </Row>
-    </UserLayout>
+    </AdminLayout>
   )
 }
 
-export default OrderPage
+export default AdminOrderPage

@@ -12,6 +12,7 @@ import AdminHomePage from "../pages/admin_home"
 import AdminBookPage from "../pages/admin_book"
 import AdminBookManagePage from "../pages/admin_book_manage"
 import AdminUserManagePage from "../pages/admin_user_manage"
+import AdminOrderPage from "../pages/admin_order"
 
 function AppRouter() {
   return (
@@ -30,6 +31,7 @@ function AppRouter() {
         <Route path="/admin/book/:id" element={<AdminBookPage />} />
         <Route path="/admin/book-manage" element={<AdminBookManagePage />} />
         <Route path="/admin/user-manage" element={<AdminUserManagePage />} />
+        <Route path="/admin/order" element={<AdminOrderPage />} />
       </Routes>
     </BrowserRouter>
   )

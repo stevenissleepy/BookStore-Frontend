@@ -7,7 +7,7 @@ async function getOrders() {
   return checkResponse(response) ? response.data.orders : []
 }
 
-async function searchOrders(dateRange, bookTitle) {
+async function searchUserOrders(dateRange, bookTitle) {
   const orders = await getOrders()
 
   const filteredOrders = orders.filter((order) => {
@@ -22,6 +22,18 @@ async function searchOrders(dateRange, bookTitle) {
   })
 
   return filteredOrders
+}
+
+async function searchAllOrders(dateRange, bookTitle) {
+  const url = `${BASE_URL}/order/search/all`
+  const data = {
+    startDate: dateRange ? dateRange[0] : null,
+    endDate: dateRange ? dateRange[1] : null,
+    bookTitle: bookTitle || null
+  }
+
+  const response = await post(url, data)
+  return checkResponse(response) ? response.data.orders : []
 }
 
 async function statsBooks(dateRange) {
@@ -55,4 +67,4 @@ async function checkout(receiver, tel, address, bookIds) {
   return checkResponse(response)
 }
 
-export { getOrders, checkout, searchOrders, statsBooks }
+export { getOrders, checkout, searchUserOrders, searchAllOrders, statsBooks }
