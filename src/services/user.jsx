@@ -7,6 +7,12 @@ async function getUser() {
   return checkResponse(response) ? response.data : null
 }
 
+async function getUsers() {
+  const url = `${BASE_URL}/user/all`
+  const response = await post(url)
+  return checkResponse(response) ? response.data.users : []
+}
+
 async function updateUser(data) {
   const url = `${BASE_URL}/user`
   const response = await put(url, data)
@@ -34,4 +40,16 @@ async function register(username, password, email) {
   return response.message
 }
 
-export { getUser, updateUser, login, logout, register }
+async function banUser(username) {
+  const url = `${BASE_URL}/user/ban/${username}`
+  const response = await put(url)
+  return checkResponse(response)
+}
+
+async function unbanUser(username) {
+  const url = `${BASE_URL}/user/unban/${username}`
+  const response = await put(url)
+  return checkResponse(response)
+}
+
+export { getUser, getUsers, updateUser, login, logout, register, banUser, unbanUser }

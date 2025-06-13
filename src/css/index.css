@@ -352,49 +352,12 @@ body {
 .admin-user-list-item {
   width: 100%;
   transition: background-color 0.3s; /* 鼠标悬停时的过渡效果 */
+  margin: 4px 0; 
+  border-radius: 4px; 
 }
 
 .admin-user-list-item:hover {
   background-color: #fafafa; /* 鼠标悬停时背景变浅 */
-}
-
-.admin-user-list-item-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 5px;
-}
-
-.admin-user-list-item-title a {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-  transition: color 0.3s; /* 添加颜色过渡效果 */
-}
-
-.admin-user-list-item-title a:hover {
-  color: #4285f4; /* 鼠标悬停时改变颜色 */
-}
-
-.admin-user-list-item-author {
-  margin: 4px 0;
-  font-size: 14px;
-  color: #888;
-}
-
-.admin-user-list-item-price {
-  margin: 4px 0;
-  font-size: 14px;
-  color: #555;
-}
-
-.admin-user-list-item-stock {
-  margin: 4px 0;
-  font-size: 14px;
-  color: #555;
-}
-
-.admin-user-list-item-total {
-  font-size: 18px;
-  font-weight: 600;
+  margin: 4px 0; 
+  border-radius: 4px; 
 }
