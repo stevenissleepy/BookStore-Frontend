@@ -23,7 +23,7 @@ async function login(username, password) {
   const url = `${BASE_URL}/user/login`
   const encryptedPassword = encryptPassword(username, password)
   const response = await post(url, { username, password: encryptedPassword })
-  return checkResponse(response)
+  return response
 }
 
 async function logout() {

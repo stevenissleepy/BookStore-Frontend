@@ -11,13 +11,9 @@ function LoginPage() {
 
   async function handleSubmit(values) {
     const { username, password } = values
-    login(username, password).then((ok) => {
-      function onOk() {
-        const path = username === "admin" ? "/admin" : "/"
-        navigate(path)
-      }
-      handleApiResponse(ok, messageApi, "登录成功", "登录失败", onOk)
-    })
+    const response = await login(username, password)
+    const onOk = () => navigate(username === "admin" ? "/admin" : "/")
+    handleApiResponse(response.code==200, messageApi, null, response.message, onOk)
   }
 
   return (
@@ -27,6 +23,7 @@ function LoginPage() {
         backgroundColor: "white",
       }}
     >
+      {contextHolder}
       <LoginFormPage
         backgroundImageUrl="/login-bg.png"
         backgroundVideoUrl="https://gw.alipayobjects.com/v/huamei_gcee1x/afts/video/jXRBRK_VAwoAAAAAAAAAAAAAK4eUAQBr"
