@@ -8,6 +8,7 @@ import { searchBooks } from "../services/book"
 
 function HomePage() {
   const [books, setBooks] = useState([])
+  const [quantity, setQuantity] = useState(0)
   const [query, setQuery] = useState("")
   const [selectedCategories, setSelectedCategories] = useState([])
 
@@ -25,11 +26,17 @@ function HomePage() {
   }
 
   useEffect(() => {
-    searchBooks("", [], 0, 8).then(({ books }) => setBooks(books))
+    searchBooks("", [], 0, 8).then(({ books, quantity }) => {
+      setBooks(books)
+      setQuantity(quantity)
+    })
   }, [])
 
   useEffect(() => {
-    searchBooks(query, selectedCategories, 0, 8).then(({ books }) => setBooks(books))
+    searchBooks(query, selectedCategories, 0, 8).then(({ books, quantity }) => {
+      setBooks(books)
+      setQuantity(quantity)
+    })
   }, [query, selectedCategories])
 
   return (
@@ -37,12 +44,12 @@ function HomePage() {
       <Row>
         {/* search form */}
         <Col span={24}>
-          <BookListHeader quantity={books.length} setQuery={setQuery} setSelectedCategories={setSelectedCategories} />
+          <BookListHeader quantity={quantity} setQuery={setQuery} setSelectedCategories={setSelectedCategories} />
         </Col>
 
         {/* book list */}
         <Col span={24}>
-          <BookList books={books} loadMoreBooks={loadMoreBooks} />
+          <BookList books={books} quantity={quantity} loadMoreBooks={loadMoreBooks} />
         </Col>
       </Row>
     </UserLayout>

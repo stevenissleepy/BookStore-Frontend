@@ -8,12 +8,12 @@ import BookCard from "./book_card"
 
 import { getCategories } from "../services/book"
 
-function BookList({ books, loadMoreBooks }) {
+function BookList({ books, quantity, loadMoreBooks }) {
   return (
     <InfiniteScroll
       dataLength={books.length}
       next={loadMoreBooks}
-      hasMore={true}
+      hasMore={books.length < quantity}
       loader={<h4>Loading...</h4>}
       style={{ width: "100%", overflow: "hidden" }}
     >
