@@ -11,12 +11,24 @@ function HomePage() {
   const [query, setQuery] = useState("")
   const [selectedCategories, setSelectedCategories] = useState([])
 
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  async function loadMoreBooks() {
+    if (loading) return;
+    setLoading(true);
+    const newBooks = await searchBooks(query, selectedCategories, page, 8);
+    setBooks(books => [...books, ...newBooks]);
+    setPage(page + 1);
+    setLoading(false);
+  }
+
   useEffect(() => {
-    searchBooks("", []).then(setBooks)
+    searchBooks("", [], 0, 8).then(setBooks)
   }, [])
 
   useEffect(() => {
-    searchBooks(query, selectedCategories).then(setBooks)
+    searchBooks(query, selectedCategories, 0, 8).then(setBooks)
   }, [query, selectedCategories])
 
   return (
@@ -33,7 +45,7 @@ function HomePage() {
 
         {/* book list */}
         <Col span={24}>
-          <BookList books={books} />
+          <BookList books={books} loadMoreBooks={loadMoreBooks} />
         </Col>
       </Row>
     </UserLayout>

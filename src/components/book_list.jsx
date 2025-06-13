@@ -1,27 +1,30 @@
 import { useState, useEffect } from "react"
 import { List, Space, Row, Col, Select } from "antd"
 import { MenuOutlined } from "@ant-design/icons"
+import InfiniteScroll from "react-infinite-scroll-component"
 
 import { SearchBox } from "../components/search_box"
 import BookCard from "./book_card"
 
 import { getCategories } from "../services/book"
 
-function BookList({ books }) {
+function BookList({ books, loadMoreBooks }) {
   return (
     <Space direction="vertical" style={{ width: "100%" }}>
-      <List
-        grid={{ gutter: 16, column: 4 }}
-        dataSource={books.map((book) => ({
-          ...book,
-          key: book.id,
-        }))}
-        renderItem={(book) => (
-          <List.Item>
-            <BookCard book={book} />
-          </List.Item>
-        )}
-      />
+      <InfiniteScroll dataLength={books.length} next={loadMoreBooks} hasMore={true} loader={<h4>Loading...</h4>}>
+        <List
+          grid={{ gutter: 16, column: 4 }}
+          dataSource={books.map((book) => ({
+            ...book,
+            key: book.id,
+          }))}
+          renderItem={(book) => (
+            <List.Item>
+              <BookCard book={book} />
+            </List.Item>
+          )}
+        />
+      </InfiniteScroll>
     </Space>
   )
 }
