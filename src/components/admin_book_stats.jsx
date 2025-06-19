@@ -2,17 +2,33 @@ import { useState, useEffect } from "react"
 import { Card, DatePicker } from "antd"
 import { Bar } from "@ant-design/charts"
 
-import { getTop10Books } from "../services/book"
+import { searchTop10Books } from "../services/stats"
 
 function AdminBookStats() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    getTop10Books().then(setData)
+    searchTop10Books().then(setData)
   }, [])
 
   function handleSearch(dateRange) {
-    getTop10Books(dateRange).then(setData)
+    searchTop10Books(dateRange).then(setData)
+  }
+
+  const config = {
+    data,
+    xField: "title",
+    yField: "sales",
+    style: {
+      minWidth: 30,
+      maxWidth: 30,
+    },
+    tooltip: [
+      (datum) => ({
+        name: "销量",
+        value: datum.sales + " 本",
+      }),
+    ],
   }
 
   return (
@@ -21,7 +37,7 @@ function AdminBookStats() {
       variant="borderless"
       extra={<DatePicker.RangePicker size="large" variant="borderless" onChange={handleSearch} />}
     >
-      <Bar data={data} xField={"title"} yField={"sales"} />
+      <Bar {...config} />
     </Card>
   )
 }

@@ -36,14 +36,4 @@ async function deleteBook(id) {
   return checkResponse(response)
 }
 
-async function getTop10Books(dateRange) {
-  const url = `${BASE_URL}/book/sales`
-  const data = {
-    startDate: dateRange ? dateRange[0].format("YYYY-MM-DD") : null,
-    endDate: dateRange ? dateRange[1].format("YYYY-MM-DD") : null,
-  }
-  const response = await post(url, data)
-  return checkResponse(response) ? response.data.salesItems : []
-}
-
-export { getBookById, searchBooks, getCategories, uploadBook, updateBook, deleteBook, getTop10Books }
+export { getBookById, searchBooks, getCategories, uploadBook, updateBook, deleteBook }
