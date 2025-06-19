@@ -1,11 +1,12 @@
-import { Row, Col, List, FloatButton, Input } from "antd"
-import { PlusOutlined } from "@ant-design/icons"
 import { useState } from "react"
+import { PlusOutlined } from "@ant-design/icons"
+import { Row, Col, List, FloatButton, Input } from "antd"
+import InfiniteScroll from "react-infinite-scroll-component"
 
 import AdminBookListItem from "./admin_book_list_item"
 import BookUploadModal from "./book_upload_modal"
 
-function AdminBookListHeader({ onSearch }) {
+function AdminBookListHeader({ setQuery }) {
   const [showModal, setShowModal] = useState(false)
   return (
     <>
@@ -20,15 +21,25 @@ function AdminBookListHeader({ onSearch }) {
         </Col>
 
         <Col span={7} offset={14}>
-          <Input.Search placeholder="搜索书籍" allowClear enterButton size="large" onSearch={onSearch} />
+          <Input.Search placeholder="搜索书籍" allowClear enterButton size="large" onSearch={setQuery} />
         </Col>
       </Row>
     </>
   )
 }
 
-function AdminBookList({ books }) {
-  return <List itemLayout="horizontal" dataSource={books} renderItem={(book) => <AdminBookListItem book={book} />} />
+function AdminBookList({ books, quantity, loadMoreBooks }) {
+  return (
+    <InfiniteScroll
+      dataLength={books.length}
+      next={loadMoreBooks}
+      hasMore={books.length < quantity}
+      loader={<h4>Loading...</h4>}
+      style={{ width: "100%", overflow: "hidden" }}
+    >
+      <List itemLayout="horizontal" dataSource={books} renderItem={(book) => <AdminBookListItem book={book} />} />
+    </InfiniteScroll>
+  )
 }
 
 export { AdminBookListHeader, AdminBookList }
