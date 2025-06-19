@@ -3,7 +3,7 @@ import { Card, Space, Empty, List, DatePicker } from "antd"
 
 import BookStatsItem from "./book_stats_item"
 
-import { statsBooks } from "../services/order"
+import { statsBooks } from "../services/stats"
 
 function BookStats() {
   const [bookStats, setBookStats] = useState([])

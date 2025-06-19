@@ -28,37 +28,12 @@ async function searchAllOrders(dateRange, bookTitle) {
   const url = `${BASE_URL}/order/search/all`
   const data = {
     startDate: dateRange ? dateRange[0].format("YYYY-MM-DD") : null,
-    endDate:   dateRange ? dateRange[1].format("YYYY-MM-DD") : null,
-    bookTitle: bookTitle || null
+    endDate: dateRange ? dateRange[1].format("YYYY-MM-DD") : null,
+    bookTitle: bookTitle || null,
   }
 
   const response = await post(url, data)
   return checkResponse(response) ? response.data.orders : []
-}
-
-async function statsBooks(dateRange) {
-  // 找到符合条件的 orders
-  const orders = await getOrders()
-  const filteredOrders = orders.filter((order) => {
-    return dateRange
-      ? new Date(dateRange[0]) <= new Date(order.date) && new Date(order.date) <= addDays(dateRange[1], 1)
-      : true
-  })
-
-  // 统计书籍
-  const bookStats = []
-  filteredOrders.forEach((order) => {
-    order.orderItems.forEach((item) => {
-      const existingBook = bookStats.find((statsItem) => statsItem.book.id === item.book.id)
-      if (existingBook) {
-        existingBook.quantity += item.quantity
-      } else {
-        bookStats.push(item)
-      }
-    })
-  })
-
-  return bookStats
 }
 
 async function checkout(receiver, tel, address, bookIds) {
@@ -67,4 +42,4 @@ async function checkout(receiver, tel, address, bookIds) {
   return checkResponse(response)
 }
 
-export { getOrders, checkout, searchUserOrders, searchAllOrders, statsBooks }
+export { getOrders, checkout, searchUserOrders, searchAllOrders }

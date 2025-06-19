@@ -1,5 +1,21 @@
 import { post, BASE_URL, checkResponse } from "./common"
 
+async function statsBooks(dateRange) {
+  const url = `${BASE_URL}/stats/books`
+  const data = {
+    startDate: dateRange ? dateRange[0].format("YYYY-MM-DD") : null,
+    endDate: dateRange ? dateRange[1].format("YYYY-MM-DD") : null,
+  }
+  const response = await post(url, data)
+  
+  if( checkResponse(response)) {
+    return response.data.salesItems.map((item) => ({
+      book: item.object,
+      quantity: item.quantity,
+    }))
+  }
+}
+
 async function searchTop10Books(dateRange) {
   const url = `${BASE_URL}/stats/top-10-books`
   const data = {
@@ -10,7 +26,7 @@ async function searchTop10Books(dateRange) {
 
   if (checkResponse(response)) {
     return response.data.salesItems.map((item) => ({
-      title: item.name,
+      title: item.object,
       sales: item.quantity,
     }))
   } else {
@@ -28,7 +44,7 @@ async function searchTop10Users(dateRange) {
 
   if (checkResponse(response)) {
     return response.data.salesItems.map((item) => ({
-      username: item.name,
+      username: item.object,
       spent: item.quantity,
     }))
   } else {
@@ -36,4 +52,4 @@ async function searchTop10Users(dateRange) {
   }
 }
 
-export { searchTop10Books, searchTop10Users }
+export { statsBooks, searchTop10Books, searchTop10Users }
