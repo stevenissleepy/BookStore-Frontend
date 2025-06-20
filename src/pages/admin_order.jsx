@@ -6,16 +6,38 @@ import { OrderList, OrderListHeader } from "../components/order_list"
 
 import { searchAllOrders } from "../services/order"
 
-function AdminOrderPage() {
+function OrderPage() {
   const [orders, setOrders] = useState([])
+  const [quantity, setQuantity] = useState(0)
+  const [bookTitle, setBookTitle] = useState("")
+  const [dateRange, setDateRange] = useState(null)
+
+  const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(false)
+
+  async function loadMoreOrders() {
+    if (loading) return
+    setLoading(true)
+    const response = await searchAllOrders(dateRange, bookTitle, page, 8)
+    const newOrders = response.orders || []
+    setOrders((orders) => [...orders, ...newOrders])
+    setPage(page + 1)
+    setLoading(false)
+  }
 
   useEffect(() => {
-    searchAllOrders(null, null).then(setOrders)
+    searchAllOrders(null, "", 0, 8).then(({ orders, quantity }) => {
+      setOrders(orders)
+      setQuantity(quantity)
+    })
   }, [])
 
-  async function handleSearch(dateRange, bookTitle) {
-    searchAllOrders(dateRange, bookTitle).then(setOrders)
-  }
+  useEffect(() => {
+    searchAllOrders(dateRange, bookTitle, 0, 8).then(({ orders, quantity }) => {
+      setOrders(orders)
+      setQuantity(quantity)
+    })
+  }, [bookTitle, dateRange])
 
   return (
     <AdminLayout>
@@ -23,14 +45,14 @@ function AdminOrderPage() {
         {/* cart title */}
         <Col span={24}>
           <Card variant="borderless">
-            <OrderListHeader onSearch={handleSearch} />
+            <OrderListHeader setBookTitle={setBookTitle} setDateRange={setDateRange} />
           </Card>
         </Col>
 
         {/* cart list */}
         <Col span={24}>
           <Card variant="borderless">
-            <OrderList orders={orders} />
+            <OrderList orders={orders} quantity={quantity} loadMoreOrders={loadMoreOrders} />
           </Card>
         </Col>
       </Row>
@@ -38,4 +60,4 @@ function AdminOrderPage() {
   )
 }
 
-export default AdminOrderPage
+export default OrderPage

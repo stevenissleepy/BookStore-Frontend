@@ -7,8 +7,8 @@ async function statsBooks(dateRange) {
     endDate: dateRange ? dateRange[1].format("YYYY-MM-DD") : null,
   }
   const response = await post(url, data)
-  
-  if( checkResponse(response)) {
+
+  if (checkResponse(response)) {
     return response.data.salesItems.map((item) => ({
       book: item.object,
       quantity: item.quantity,

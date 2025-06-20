@@ -8,14 +8,36 @@ import { searchUserOrders } from "../services/order"
 
 function OrderPage() {
   const [orders, setOrders] = useState([])
+  const [quantity, setQuantity] = useState(0)
+  const [bookTitle, setBookTitle] = useState("")
+  const [dateRange, setDateRange] = useState(null)
+
+  const [page, setPage] = useState(1)
+  const [loading, setLoading] = useState(false)
+
+  async function loadMoreOrders() {
+    if (loading) return
+    setLoading(true)
+    const response = await searchUserOrders(dateRange, bookTitle, page, 8)
+    const newOrders = response.orders || []
+    setOrders((orders) => [...orders, ...newOrders])
+    setPage(page + 1)
+    setLoading(false)
+  }
 
   useEffect(() => {
-    searchUserOrders().then(setOrders)
+    searchUserOrders(null, "", 0, 8).then(({ orders, quantity }) => {
+      setOrders(orders)
+      setQuantity(quantity)
+    })
   }, [])
 
-  async function handleSearch(dateRange, bookTitle) {
-    searchUserOrders(dateRange, bookTitle).then(setOrders)
-  }
+  useEffect(() => {
+    searchUserOrders(dateRange, bookTitle, 0, 8).then(({ orders, quantity }) => {
+      setOrders(orders)
+      setQuantity(quantity)
+    })
+  }, [bookTitle, dateRange])
 
   return (
     <UserLayout>
@@ -23,14 +45,14 @@ function OrderPage() {
         {/* cart title */}
         <Col span={24}>
           <Card variant="borderless">
-            <OrderListHeader onSearch={handleSearch} />
+            <OrderListHeader setBookTitle={setBookTitle} setDateRange={setDateRange} />
           </Card>
         </Col>
 
         {/* cart list */}
         <Col span={24}>
           <Card variant="borderless">
-            <OrderList orders={orders} />
+            <OrderList orders={orders} quantity={quantity} loadMoreOrders={loadMoreOrders} />
           </Card>
         </Col>
       </Row>

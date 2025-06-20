@@ -1,16 +1,22 @@
-import { useState } from "react"
 import { List, Row, Col, Input, DatePicker } from "antd"
+import InfiniteScroll from "react-infinite-scroll-component"
 
 import OrderItem from "./order_item"
 
-function OrderList({ orders }) {
-  return <List itemLayout="horizontal" dataSource={orders} renderItem={(order) => <OrderItem order={order} />} />
+function OrderList({ orders, quantity, loadMoreOrders }) {
+  return (
+    <InfiniteScroll
+      dataLength={orders.length}
+      next={loadMoreOrders}
+      hasMore={orders.length < quantity}
+      loader={<h4>Loading...</h4>}
+    >
+      <List itemLayout="horizontal" dataSource={orders} renderItem={(order) => <OrderItem order={order} />} />
+    </InfiniteScroll>
+  )
 }
 
-function OrderListHeader({ onSearch }) {
-  const [dateRange, setDateRange] = useState(null)
-  const [bookTitle, setBookTitle] = useState("")
-
+function OrderListHeader({ setBookTitle, setDateRange }) {
   return (
     <Row justify={"start"} align="middle">
       {/* 调整位置 */}
@@ -21,29 +27,13 @@ function OrderListHeader({ onSearch }) {
       </Col>
 
       <Col span={5} offset={10}>
-        <DatePicker.RangePicker
-          size="large"
-          variant="borderless"
-          onChange={(dates) => {
-            setDateRange(dates)
-            onSearch(dates, bookTitle)
-          }}
-        />
+        <DatePicker.RangePicker size="large" variant="borderless" onChange={setDateRange} />
       </Col>
 
       <Col flex={"30px"}></Col>
 
       <Col span={6}>
-        <Input.Search
-          placeholder="通过书名搜索"
-          allowClear
-          enterButton
-          size="large"
-          onSearch={(value) => {
-            setBookTitle(value)
-            onSearch(dateRange, value)
-          }}
-        />
+        <Input.Search placeholder="通过书名搜索" allowClear enterButton size="large" onSearch={setBookTitle} />
       </Col>
     </Row>
   )
