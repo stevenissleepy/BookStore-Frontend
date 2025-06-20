@@ -16,7 +16,7 @@
 
 ## book
 
-获取所有书籍信息 `getAllBook()`
+搜索书籍信息 `searchBooks(query, categories, page, limit)`
 
 ```json
 {
@@ -75,10 +75,13 @@
 
 ## order
 
-获取用户订单 `getOrders()`
+搜索订单 
++ `searchAllOrders(dateRange, bookTitle, page, limit)`
++ `searchUserOrders(dateRange, bookTitle, page, limit)`
 
 ```json
 {
+  "quantity": 2,
   "orders": [
     {
       "receiver": "Jane Doe",

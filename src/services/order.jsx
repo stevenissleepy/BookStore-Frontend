@@ -11,7 +11,7 @@ async function searchUserOrders(dateRange, bookTitle, page = 0, limit = 8) {
   }
 
   const response = await post(url, data)
-  return checkResponse(response) ? response.data : []
+  return checkResponse(response) ? response.data : { orders: [], quantity: 0 }
 }
 
 async function searchAllOrders(dateRange, bookTitle, page = 0, limit = 8) {
@@ -25,7 +25,7 @@ async function searchAllOrders(dateRange, bookTitle, page = 0, limit = 8) {
   }
 
   const response = await post(url, data)
-  return checkResponse(response) ? response.data : []
+  return checkResponse(response) ? response.data : { orders: [], quantity: 0 }
 }
 
 async function checkout(receiver, tel, address, bookIds) {
