@@ -9,7 +9,7 @@ async function getCart() {
 async function addToCart(bookId, quantity) {
   const url = `${BASE_URL}/cart/add`
   const response = await post(url, { bookId, quantity })
-  return checkResponse(response)
+  return { ok: checkResponse(response), message: response.message }
 }
 
 async function updateCartItem(bookId, quantity) {

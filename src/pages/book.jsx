@@ -22,11 +22,17 @@ function BookPage() {
   }, [id])
 
   function handleAddToCart() {
-    addToCart(book.id, 1).then((ok) => handleApiResponse(ok, messageApi, "成功添加到购物车", "添加到购物车失败"))
+    addToCart(book.id, 1).then(({ ok, message }) =>
+      handleApiResponse(ok, messageApi, message || "成功添加到购物车", message || "添加到购物车失败")
+    )
   }
 
   function handleBuyNow() {
-    addToCart(book.id, 1).then((ok) => handleApiResponse(ok, null, null, null, () => navigate("/cart")))
+    addToCart(book.id, 1).then(({ ok, message }) =>
+      handleApiResponse(ok, messageApi, message || "成功添加到购物车", message || "添加到购物车失败", () =>
+        navigate("/cart")
+      )
+    )
   }
 
   return (
