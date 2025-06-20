@@ -4,13 +4,13 @@ import { Card, Row, Col } from "antd"
 import { UserLayout } from "../components/layout"
 import { OrderList, OrderListHeader } from "../components/order_list"
 
-import { getOrders, searchUserOrders } from "../services/order"
+import { searchUserOrders } from "../services/order"
 
 function OrderPage() {
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
-    getOrders().then(setOrders)
+    searchUserOrders().then(setOrders)
   }, [])
 
   async function handleSearch(dateRange, bookTitle) {
