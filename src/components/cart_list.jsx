@@ -47,7 +47,7 @@ function CartListHeader() {
     const bookIds = cart.filter((item) => item.selected).map((item) => item.book.id)
     const { receiver, tel, address } = addr
     checkout(receiver, tel, address, bookIds)
-      .then((ok) => handleApiResponse(ok, messageApi, "下单成功", "下单失败"))
+      .then((response) => messageApi.success(response.message, 1))
       .finally(() => {
         window.location.reload()
         setShowModal(false)
