@@ -31,7 +31,7 @@ async function searchAllOrders(dateRange, bookTitle, page = 0, limit = 8) {
 async function checkout(receiver, tel, address, bookIds) {
   const url = `${BASE_URL}/order`
   const response = await post(url, { receiver, tel, address, bookIds })
-  return checkResponse(response)
+  return response
 }
 
 export { checkout, searchUserOrders, searchAllOrders }

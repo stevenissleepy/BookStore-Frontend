@@ -1,4 +1,4 @@
-import { Layout, Row, Col, Menu, Dropdown, Button } from "antd"
+import { Layout, Row, Col, Menu, Dropdown, Button, message } from "antd"
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { UserOutlined, FormOutlined } from "@ant-design/icons"
 import { AccountBookOutlined, LogoutOutlined } from "@ant-design/icons"
@@ -7,6 +7,7 @@ import { logout } from "../services/user"
 
 function BaseHeader({ navItems, dropMenuItems, menuSpan }) {
   const navigate = useNavigate()
+  const [messageApi, contextHolder] = message.useMessage()
   const parts = useLocation().pathname.split("/")
   const selectedKey = "/" + parts[parts.length - 1]
 
@@ -17,13 +18,21 @@ function BaseHeader({ navItems, dropMenuItems, menuSpan }) {
 
   function handleDropMenuClick({ key }) {
     if (key === "logout") {
-      logout().then(() => navigate("/login"))
+      logout().then((response) => {
+        if (response.code === 200) {
+          const duration = Number(response.data.sessionDuration) / 1000
+          messageApi.success("登出成功，登录时间: " + duration.toFixed(0) + "s")
+          .then(() => navigate("/login"))
+        }      
+      })
     }
   }
 
   return (
     <Layout.Header className="header">
+
       <Row className="navbar" justify="space-between">
+        {contextHolder}
         {/* Logo */}
         <Col flex="120px">
           <Link to="/">
