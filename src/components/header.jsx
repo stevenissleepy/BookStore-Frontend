@@ -20,7 +20,7 @@ function BaseHeader({ navItems, dropMenuItems, menuSpan }) {
     if (key === "logout") {
       logout().then((response) => {
         if (response.code === 200) {
-          const duration = Number(response.data.sessionDuration) / 1000
+          const duration = Number(response.data.duration) / 1000
           messageApi.success("登出成功，登录时间: " + duration.toFixed(0) + "s")
           .then(() => navigate("/login"))
         }      
