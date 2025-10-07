@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext, useCallback } from "react"
 import { Card, Row, Col } from "antd"
 
 import { UserLayout } from "../components/layout"
 import { OrderList, OrderListHeader } from "../components/order_list"
 
+import { UserContext } from "../utils/context"
 import { searchUserOrders } from "../services/order"
+import useOrderWebSocket from "../hooks/useOrderWebSocket"
 
-function OrderPage() {
+function OrderPageContent () {
+  const { user } = useContext(UserContext)
+
   const [orders, setOrders] = useState([])
   const [quantity, setQuantity] = useState(0)
   const [bookTitle, setBookTitle] = useState("")
@@ -14,6 +18,15 @@ function OrderPage() {
 
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
+
+  const fetchInitialOrders = useCallback(() => {
+    setLoading(true)
+    searchUserOrders(dateRange, bookTitle, 0, 8).then(({ orders, quantity }) => {
+      setOrders(orders)
+      setQuantity(quantity)
+      setPage(1)
+    }).finally(() => setLoading(false))
+  }, [dateRange, bookTitle])
 
   async function loadMoreOrders() {
     if (loading) return
@@ -26,36 +39,34 @@ function OrderPage() {
   }
 
   useEffect(() => {
-    searchUserOrders(null, "", 0, 8).then(({ orders, quantity }) => {
-      setOrders(orders)
-      setQuantity(quantity)
-    })
-  }, [])
+    fetchInitialOrders()
+  }, [fetchInitialOrders])
 
-  useEffect(() => {
-    searchUserOrders(dateRange, bookTitle, 0, 8).then(({ orders, quantity }) => {
-      setOrders(orders)
-      setQuantity(quantity)
-    })
-  }, [bookTitle, dateRange])
+  useOrderWebSocket(user.id, fetchInitialOrders)
 
   return (
-    <UserLayout>
-      <Row gutter={[0, 20]}>
-        {/* cart title */}
-        <Col span={24}>
-          <Card variant="borderless">
-            <OrderListHeader setBookTitle={setBookTitle} setDateRange={setDateRange} />
-          </Card>
-        </Col>
+    <Row gutter={[0, 20]}>
+      {/* order title */}
+      <Col span={24}>
+        <Card variant="borderless">
+          <OrderListHeader setBookTitle={setBookTitle} setDateRange={setDateRange} />
+        </Card>
+      </Col>
 
-        {/* cart list */}
-        <Col span={24}>
-          <Card variant="borderless">
-            <OrderList orders={orders} quantity={quantity} loadMoreOrders={loadMoreOrders} />
-          </Card>
-        </Col>
-      </Row>
+      {/* order list */}
+      <Col span={24}>
+        <Card variant="borderless">
+          <OrderList orders={orders} quantity={quantity} loadMoreOrders={loadMoreOrders} />
+        </Card>
+      </Col>
+    </Row>
+  )
+}
+
+function OrderPage() {
+  return (
+    <UserLayout>
+      <OrderPageContent />
     </UserLayout>
   )
 }
