@@ -13,5 +13,6 @@ zip -rq "${OUTPUT_FILE}" . \
     -x "data.md" \
     -x "${OUTPUT_FILE}"
 
-# --- 脚本结束 ---
-echo "打包完成"
+mv "$OUTPUT_FILE" "/mnt/c/Users/steven/Desktop/$OUTPUT_FILE"
+
+echo "文件已保存为: /mnt/c/Users/steven/Desktop/$OUTPUT_FILE"
