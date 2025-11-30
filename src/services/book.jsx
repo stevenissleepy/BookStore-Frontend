@@ -8,6 +8,14 @@ async function getBookById(id) {
 
 async function searchBooks(query, categories, page = 0, limit = 100) {
   const url = `${BASE_URL}/book/search`
+
+  // search by tag
+  if(query.startsWith('tag:')) {
+    const tag = query.slice(4).trim()
+    const response = await post(url, { tag, page, limit })
+    return checkResponse(response) ? response.data : { quantity: 0, books: [] }
+  }
+  
   const response = await post(url, { query, categories, page, limit })
   return checkResponse(response) ? response.data : { quantity: 0, books: [] }
 }
