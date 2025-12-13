@@ -61,6 +61,7 @@ function UserHeader({ user = null }) {
     { label: "CART", key: "/cart", location: "/cart" },
     { label: "ORDER", key: "/order", location: "/order" },
     { label: "STATS", key: "/stats", location: "/stats" },
+    { label: "AGENT", key: "/agent", location: "/agent" },
   ]
 
   const userDropMenuItems = [

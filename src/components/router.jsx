@@ -15,6 +15,8 @@ import AdminUserManagePage from "../pages/admin_user_manage"
 import AdminOrderPage from "../pages/admin_order"
 import AdminStatsPage from "../pages/admin_stats"
 
+import AgentPage from "../pages/agent"
+
 function AppRouter() {
   return (
     <BrowserRouter>
@@ -34,6 +36,8 @@ function AppRouter() {
         <Route path="/admin/user-manage" element={<AdminUserManagePage />} />
         <Route path="/admin/order" element={<AdminOrderPage />} />
         <Route path="/admin/stats" element={<AdminStatsPage />} />
+
+        <Route path="/agent" element={<AgentPage />} />
       </Routes>
     </BrowserRouter>
   )
